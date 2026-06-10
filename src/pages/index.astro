@@ -2,11 +2,11 @@
 import '../styles/global.css';
 
 const marchas = [
-  { num: "01", nombre: "Marcha 1", videoId: "5DNHKNvWs1I", midiPifano: "/midi/pifano/marcha-1.mid", midiCorneta: "/midi/corneta/marcha-1.mid", midiCaja: "/midi/caja/marcha-1.mid" },
-  { num: "02", nombre: "Marcha 2 de aproximación", videoId: null, midiPifano: "/midi/pifano/marcha-2.mid", midiCorneta: "/midi/corneta/marcha-2.mid", midiCaja: "/midi/caja/marcha-2.mid" },
-  { num: "03", nombre: "Marcha 3", videoId: null, midiPifano: "/midi/pifano/marcha-3.mid", midiCorneta: "/midi/corneta/marcha-3.mid", midiCaja: "/midi/caja/marcha-3.mid" },
+  { num: "01", nombre: "Marcha 1", videoId: "rwh3GauQJXo", midiPifano: "/midi/pifano/marcha-1.mid", midiCorneta: "/midi/corneta/marcha-1.mid", midiCaja: "/midi/caja/marcha-1.mid" },
+  { num: "02", nombre: "Marcha 2 de aproximación", videoId: "Gi2c1gBAhiU", midiPifano: "/midi/pifano/marcha-2.mid", midiCorneta: "/midi/corneta/marcha-2.mid", midiCaja: "/midi/caja/marcha-2.mid" },
+  { num: "03", nombre: "Marcha 3", videoId: "5Nj9n4BTVZI", midiPifano: "/midi/pifano/marcha-3.mid", midiCorneta: "/midi/corneta/marcha-3.mid", midiCaja: "/midi/caja/marcha-3.mid" },
   { num: "04", nombre: "Marcha 4 de los 4 cambios", videoId: null, midiPifano: "/midi/pifano/marcha-4.mid", midiCorneta: "/midi/corneta/marcha-4.mid", midiCaja: "/midi/caja/marcha-4.mid" },
-  { num: "05", nombre: "Marcha 5", videoId: null, midiPifano: "/midi/pifano/marcha-5.mid", midiCorneta: "/midi/corneta/marcha-5.mid", midiCaja: "/midi/caja/marcha-5.mid" },
+  { num: "05", nombre: "Marcha 5", videoId: "4_yRGLT6UQ4", midiPifano: "/midi/pifano/marcha-5.mid", midiCorneta: "/midi/corneta/marcha-5.mid", midiCaja: "/midi/caja/marcha-5.mid" },
   { num: "06", nombre: "Marcha de caja / 3 cambios", videoId: null, midiPifano: "/midi/pifano/marcha-6.mid", midiCorneta: "/midi/corneta/marcha-6.mid", midiCaja: "/midi/caja/marcha-6.mid" },
   { num: "07", nombre: "Marcha del Jinete", videoId: null, midiPifano: "/midi/pifano/marcha-7.mid", midiCorneta: "/midi/corneta/marcha-7.mid", midiCaja: "/midi/caja/marcha-7.mid" },
   { num: "08", nombre: "Prado", videoId: null, midiPifano: "/midi/pifano/marcha-8.mid", midiCorneta: "/midi/corneta/marcha-8.mid", midiCaja: "/midi/caja/marcha-8.mid" },
@@ -76,11 +76,7 @@ const marchas = [
                 <span class="text-3xl font-bold text-yellow-600/50">{marcha.num}</span>
                 <h3 class="text-xl font-semibold text-yellow-500">{marcha.nombre}</h3>
               </div>
-              <div class="grid md:grid-cols-2 gap-6">
-                <div class="bg-slate-900 rounded-lg p-4 border border-slate-700/50 flex flex-col justify-center items-center h-32">
-                   <p class="text-slate-400 text-sm mb-2">Reproductor Interactivo</p>
-                   <p class="text-xs text-yellow-600/80">(Próximamente: Controles MIDI)</p>
-                </div>
+              
                 <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700/50 aspect-video relative flex justify-center items-center">
                   {marcha.videoId ? (
                     <iframe src={`https://www.youtube.com/embed/${marcha.videoId}`} class="absolute top-0 left-0 w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
