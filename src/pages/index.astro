@@ -2,17 +2,17 @@
 import '../styles/global.css';
 
 const marchas = [
-  { num: "01", nombre: "Marcha 1", videoId: "rwh3GauQJXo", midiPifano: "/midi/pifano/marcha-1.mid", midiCorneta: "/midi/corneta/marcha-1.mid", midiCaja: "/midi/caja/marcha-1.mid" },
-  { num: "02", nombre: "Marcha 2 de aproximación", videoId: "Gi2c1gBAhiU", midiPifano: "/midi/pifano/marcha-2.mid", midiCorneta: "/midi/corneta/marcha-2.mid", midiCaja: "/midi/caja/marcha-2.mid" },
-  { num: "03", nombre: "Marcha 3", videoId: "5Nj9n4BTVZI", midiPifano: "/midi/pifano/marcha-3.mid", midiCorneta: "/midi/corneta/marcha-3.mid", midiCaja: "/midi/caja/marcha-3.mid" },
-  { num: "04", nombre: "Marcha 4 de los 4 cambios", videoId: null, midiPifano: "/midi/pifano/marcha-4.mid", midiCorneta: "/midi/corneta/marcha-4.mid", midiCaja: "/midi/caja/marcha-4.mid" },
-  { num: "05", nombre: "Marcha 5", videoId: "4_yRGLT6UQ4", midiPifano: "/midi/pifano/marcha-5.mid", midiCorneta: "/midi/corneta/marcha-5.mid", midiCaja: "/midi/caja/marcha-5.mid" },
-  { num: "06", nombre: "Marcha de caja / 3 cambios", videoId: null, midiPifano: "/midi/pifano/marcha-6.mid", midiCorneta: "/midi/corneta/marcha-6.mid", midiCaja: "/midi/caja/marcha-6.mid" },
-  { num: "07", nombre: "Marcha del Jinete", videoId: null, midiPifano: "/midi/pifano/marcha-7.mid", midiCorneta: "/midi/corneta/marcha-7.mid", midiCaja: "/midi/caja/marcha-7.mid" },
-  { num: "08", nombre: "Prado", videoId: null, midiPifano: "/midi/pifano/marcha-8.mid", midiCorneta: "/midi/corneta/marcha-8.mid", midiCaja: "/midi/caja/marcha-8.mid" },
-  { num: "09", nombre: "Traspaso corto", videoId: null, midiPifano: "/midi/pifano/marcha-9.mid", midiCorneta: "/midi/corneta/marcha-9.mid", midiCaja: "/midi/caja/marcha-9.mid" },
-  { num: "10", nombre: "Traspaso completo", videoId: null, midiPifano: "/midi/pifano/marcha-10.mid", midiCorneta: "/midi/corneta/marcha-10.mid", midiCaja: "/midi/caja/marcha-10.mid" },
-  { num: "11", nombre: "Himno del liceo", videoId: null, midiPifano: "/midi/pifano/marcha-11.mid", midiCorneta: "/midi/corneta/marcha-11.mid", midiCaja: "/midi/caja/marcha-11.mid" }
+  { num: "01", nombre: "Marcha 1", orden: "Cornetas Parte A (x2) -> Pífanos + Lira Parte A (x2) -> Pífanos + Lira Parte B (x2)", videoId: "rwh3GauQJXo", midiPifano: "/midi/pifano/marcha-1.mid", midiCorneta: "/midi/corneta/marcha-1.mid", midiCaja: "/midi/caja/marcha-1.mid" },
+  { num: "02", nombre: "Marcha 2 de aproximación", orden: "Texto de prueba", videoId: "Gi2c1gBAhiU", midiPifano: "/midi/pifano/marcha-2.mid", midiCorneta: "/midi/corneta/marcha-2.mid", midiCaja: "/midi/caja/marcha-2.mid" },
+  { num: "03", nombre: "Marcha 3", orden: "Texto de prueba", videoId: "5Nj9n4BTVZI", midiPifano: "/midi/pifano/marcha-3.mid", midiCorneta: "/midi/corneta/marcha-3.mid", midiCaja: "/midi/caja/marcha-3.mid" },
+  { num: "04", nombre: "Marcha 4 de los 4 cambios", orden: "Texto de prueba", videoId: null, midiPifano: "/midi/pifano/marcha-4.mid", midiCorneta: "/midi/corneta/marcha-4.mid", midiCaja: "/midi/caja/marcha-4.mid" },
+  { num: "05", nombre: "Marcha 5", orden: "Texto de prueba", videoId: "4_yRGLT6UQ4", midiPifano: "/midi/pifano/marcha-5.mid", midiCorneta: "/midi/corneta/marcha-5.mid", midiCaja: "/midi/caja/marcha-5.mid" },
+  { num: "06", nombre: "Marcha de caja / 3 cambios", orden: "Texto de prueba", videoId: null, midiPifano: "/midi/pifano/marcha-6.mid", midiCorneta: "/midi/corneta/marcha-6.mid", midiCaja: "/midi/caja/marcha-6.mid" },
+  { num: "07", nombre: "Marcha del Jinete", orden: "Texto de prueba", videoId: null, midiPifano: "/midi/pifano/marcha-7.mid", midiCorneta: "/midi/corneta/marcha-7.mid", midiCaja: "/midi/caja/marcha-7.mid" },
+  { num: "08", nombre: "Prado", orden: "Texto de prueba", videoId: null, midiPifano: "/midi/pifano/marcha-8.mid", midiCorneta: "/midi/corneta/marcha-8.mid", midiCaja: "/midi/caja/marcha-8.mid" },
+  { num: "09", nombre: "Traspaso corto", orden: "Texto de prueba", videoId: null, midiPifano: "/midi/pifano/marcha-9.mid", midiCorneta: "/midi/corneta/marcha-9.mid", midiCaja: "/midi/caja/marcha-9.mid" },
+  { num: "10", nombre: "Traspaso completo", orden: "Texto de prueba", videoId: null, midiPifano: "/midi/pifano/marcha-10.mid", midiCorneta: "/midi/corneta/marcha-10.mid", midiCaja: "/midi/caja/marcha-10.mid" },
+  { num: "11", nombre: "Himno del liceo", orden: "Texto de prueba", videoId: null, midiPifano: "/midi/pifano/marcha-11.mid", midiCorneta: "/midi/corneta/marcha-11.mid", midiCaja: "/midi/caja/marcha-11.mid" }
 ];
 ---
 
@@ -78,27 +78,35 @@ const marchas = [
         </div>
 
         <div class="space-y-6">
-          {marchas.map((marcha) => (
-            <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-yellow-600/50 transition-colors shadow-lg">
-              <div class="flex items-center gap-4 mb-6">
-                <span class="text-3xl font-bold text-yellow-600/50">{marcha.num}</span>
-                <h3 class="text-xl font-semibold text-yellow-500">{marcha.nombre}</h3>
-              </div>
-              
-                <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700/50 aspect-video relative flex justify-center items-center">
-                  {marcha.videoId ? (
-                    <iframe src={`https://www.youtube.com/embed/${marcha.videoId}`} class="absolute top-0 left-0 w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                  ) : (
-                    <p class="text-slate-500 text-sm flex items-center gap-2">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="#64748b"><path d="M8 5.14v14l11-7-11-7z"></path></svg>
-                      Video no disponible
-                    </p>
-                  )}
-                </div>
-              </div>
+{marchas.map((marcha) => (
+        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-yellow-600/50 transition-colors shadow-lg">
+          <div class="flex items-center gap-4 mb-6">
+            <span class="text-3xl font-bold text-yellow-600/50">{marcha.num}</span>
+            <h3 class="text-xl font-semibold text-yellow-500">{marcha.nombre}</h3>
+          </div>
+
+          <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700/50 aspect-video relative flex justify-center items-center">
+            {marcha.videoId ? (
+              <iframe src={`https://www.youtube.com/embed/${marcha.videoId}`} class="absolute top-0 left-0 w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            ) : (
+              <p class="text-slate-500 text-sm flex items-center gap-2">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#64748b"><path d="M8 5.14v14l11-7-11-7z"></path></svg>
+                Video no disponible
+              </p>
+            )}
+          </div>
+
+{/* Espacio para la orden escrita */}
+          {marcha.orden && (
+            <div class="mt-4 p-4 bg-slate-900/80 rounded-lg border-l-4 border-l-yellow-600 shadow-inner">
+              <p class="text-slate-200 text-base leading-relaxed tracking-wide">
+                <strong class="font-bold text-yellow-500 mr-2">ORDEN:</strong>
+                {marcha.orden}
+              </p>
             </div>
-          ))}
+          )}
         </div>
+      ))}
       </main>
 
       <main id="vista-instrumento" class="vista-oculta max-w-4xl mx-auto p-6 mt-4 hidden">
@@ -150,21 +158,24 @@ const marchas = [
                   {marcha.midiPifano ? (
                     <div>
   
-  <div class="bg-slate-900 p-6 flex flex-col items-center justify-center border-b border-slate-700">
-     <p class="text-slate-500 text-xs uppercase tracking-widest mb-4 font-bold">Digitación del Pífano</p>
-     
-     <div class="w-full h-100 flex items-center justify-center p-2">
-        <img 
-          id={`img-digitacion-${marcha.num}`}
-          src="/img/digitacion/pifano/silencio.png" 
-          alt="Digitación Pífano"
-          class="max-w-full max-h-full object-contain transition-opacity duration-100 opacity-40"
-        />
-     </div>
-  </div>
+ <div class="contenedor-digitacion bg-slate-900 p-6 flex flex-col items-center justify-center border-b border-slate-700">
+   <p class="text-slate-500 text-xs uppercase tracking-widest mb-4 font-bold">Digitación del Pífano</p>
+   
+   <div class="w-full h-100 flex items-center justify-center p-2">
+      <img 
+        id={`img-digitacion-${marcha.num}`}
+        src="/img/digitacion/pifano/silencio.png" 
+        alt="Digitación Pífano"
+        class="max-w-full max-h-full object-contain transition-opacity duration-100 opacity-40"
+      />
+   </div>
+</div>
 
 <midi-player 
   id={`player-${marcha.num}`} 
+  data-pifano={marcha.midiPifano}
+  data-corneta={marcha.midiCorneta}
+  data-caja={marcha.midiCaja}
   src={marcha.midiPifano} 
   sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
   style="visibility: hidden; height: 0; width: 0; position: absolute;"
@@ -182,11 +193,6 @@ const marchas = [
     </button>
   </div>
 </div>
-
-
-  </div>
-</div>
-
                     
                   ) : (
                     <div class="h-32 flex flex-col items-center justify-center gap-2">
@@ -237,20 +243,38 @@ const marchas = [
     </footer>
 
 <script>
-  // 1. NAVEGACIÓN Y ACORDEONES (Mantenemos lo que ya funciona)
+// 1. NAVEGACIÓN Y ACORDEONES
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
+      // Mostrar la vista correcta
       const vista = e.target.id.replace('btn-', 'vista-');
       document.querySelectorAll('main').forEach(m => m.classList.add('hidden'));
       document.getElementById(vista).classList.remove('hidden');
+
+      // Actualizar la línea amarilla en el menú superior
+      document.querySelectorAll('.nav-btn').forEach(b => {
+        b.classList.remove('text-yellow-400', 'border-yellow-400');
+        b.classList.add('text-slate-400', 'border-transparent');
+      });
+      e.target.classList.add('text-yellow-400', 'border-yellow-400');
+      e.target.classList.remove('text-slate-400', 'border-transparent');
     });
   });
 
   document.querySelectorAll('.acordeon-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const contenido = btn.nextElementSibling;
+      // 1. Miramos si el acordeón que tocaste está oculto en este momento
+      const estabaOculto = contenido.classList.contains('hidden');
+
+      // 2. Por regla general, cerramos TODOS los acordeones
       document.querySelectorAll('.acordeon-contenido').forEach(c => c.classList.add('hidden'));
-      contenido.classList.remove('hidden');
+
+      // 3. Si el que tocaste estaba oculto, lo abrimos. 
+      // (Si ya estaba abierto, la regla anterior lo cerró y simplemente se queda así)
+      if (estabaOculto) {
+        contenido.classList.remove('hidden');
+      }
     });
   });
 
@@ -312,7 +336,56 @@ const marchas = [
       }
     });
   }, 50); 
-</script>
+// 4. CAMBIO DE INSTRUMENTO (Pífano, Corneta, Caja)
+  document.querySelectorAll('[id^="tab-"]').forEach(tab => {
+    tab.addEventListener('click', (e) => {
+      // Saber qué instrumento se hizo clic (ej: "pifano")
+      const instrumento = e.currentTarget.id.replace('tab-', '');
+
+      // 1. Cambiar colores de las pestañas
+      document.querySelectorAll('[id^="tab-"]').forEach(t => {
+        t.classList.remove('text-yellow-400', 'border-yellow-400');
+        t.classList.add('text-slate-400', 'border-transparent');
+      });
+      e.currentTarget.classList.add('text-yellow-400', 'border-yellow-400');
+      e.currentTarget.classList.remove('text-slate-400', 'border-transparent');
+
+      // 2. Cambiar título y descripción
+      const titulos = {
+        'pifano': { nombre: 'Pífano', desc: 'Flauta de pico de cuerpo cilíndrico' },
+        'corneta': { nombre: 'Corneta', desc: 'Instrumento de viento metal' },
+        'caja': { nombre: 'Caja', desc: 'Instrumento de percusión' }
+      };
+      document.getElementById('titulo-instrumento-actual').innerText = titulos[instrumento].nombre;
+      document.getElementById('desc-instrumento-actual').innerText = titulos[instrumento].desc;
+
+      // 3. Ocultar la digitación si NO es pífano
+      document.querySelectorAll('.contenedor-digitacion').forEach(div => {
+        if (instrumento === 'pifano') {
+          div.classList.remove('hidden');
+        } else {
+          div.classList.add('hidden');
+        }
+      });
+
+      // ---> NUEVO: CERRAR ACORDEONES ABIERTOS AL CAMBIAR DE PESTAÑA <---
+      document.querySelectorAll('.acordeon-contenido').forEach(c => c.classList.add('hidden'));
+
+      // 4. Cambiar la pista MIDI de todos los reproductores
+      document.querySelectorAll('midi-player').forEach(player => {
+        const nuevaRuta = player.getAttribute(`data-${instrumento}`);
+        if (nuevaRuta && nuevaRuta !== "null") {
+          // Si estaba sonando algo, lo paramos antes de cambiar el instrumento
+          if (player.playing) player.stop();
+          
+          player.src = nuevaRuta;
+          
+          // Borramos la memoria de velocidad por si le habían bajado el tempo
+          delete player.dataset.originalNs; 
+        }
+      });
+    });
+  });</script>
 
   </body>
 </html>
