@@ -1,17 +1,314 @@
 ---
+import '../styles/global.css';
 
+const marchas = [
+  { num: "01", nombre: "Marcha 1", videoId: "5DNHKNvWs1I", midiPifano: "/midi/pifano/marcha-1.mid", midiCorneta: "/midi/corneta/marcha-1.mid", midiCaja: "/midi/caja/marcha-1.mid" },
+  { num: "02", nombre: "Marcha 2 de aproximación", videoId: null, midiPifano: "/midi/pifano/marcha-2.mid", midiCorneta: "/midi/corneta/marcha-2.mid", midiCaja: "/midi/caja/marcha-2.mid" },
+  { num: "03", nombre: "Marcha 3", videoId: null, midiPifano: "/midi/pifano/marcha-3.mid", midiCorneta: "/midi/corneta/marcha-3.mid", midiCaja: "/midi/caja/marcha-3.mid" },
+  { num: "04", nombre: "Marcha 4 de los 4 cambios", videoId: null, midiPifano: "/midi/pifano/marcha-4.mid", midiCorneta: "/midi/corneta/marcha-4.mid", midiCaja: "/midi/caja/marcha-4.mid" },
+  { num: "05", nombre: "Marcha 5", videoId: null, midiPifano: "/midi/pifano/marcha-5.mid", midiCorneta: "/midi/corneta/marcha-5.mid", midiCaja: "/midi/caja/marcha-5.mid" },
+  { num: "06", nombre: "Marcha de caja / 3 cambios", videoId: null, midiPifano: "/midi/pifano/marcha-6.mid", midiCorneta: "/midi/corneta/marcha-6.mid", midiCaja: "/midi/caja/marcha-6.mid" },
+  { num: "07", nombre: "Marcha del Jinete", videoId: null, midiPifano: "/midi/pifano/marcha-7.mid", midiCorneta: "/midi/corneta/marcha-7.mid", midiCaja: "/midi/caja/marcha-7.mid" },
+  { num: "08", nombre: "Prado", videoId: null, midiPifano: "/midi/pifano/marcha-8.mid", midiCorneta: "/midi/corneta/marcha-8.mid", midiCaja: "/midi/caja/marcha-8.mid" },
+  { num: "09", nombre: "Traspaso corto", videoId: null, midiPifano: "/midi/pifano/marcha-9.mid", midiCorneta: "/midi/corneta/marcha-9.mid", midiCaja: "/midi/caja/marcha-9.mid" },
+  { num: "10", nombre: "Traspaso completo", videoId: null, midiPifano: "/midi/pifano/marcha-10.mid", midiCorneta: "/midi/corneta/marcha-10.mid", midiCaja: "/midi/caja/marcha-10.mid" },
+  { num: "11", nombre: "Himno del liceo", videoId: null, midiPifano: "/midi/pifano/marcha-11.mid", midiCorneta: "/midi/corneta/marcha-11.mid", midiCaja: "/midi/caja/marcha-11.mid" }
+];
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Banda Escolar Liceo San José del Carmen - Material de Ensayo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
+	<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
+  </head>
+
+  <body class="bg-slate-900 text-slate-200 min-h-screen" style="font-family: 'Source Sans 3', sans-serif;">
+    
+    <header class="pt-12 pb-8 px-4 text-center">
+      <div class="flex justify-center mb-4">
+        <svg width="60" height="60" viewBox="0 0 40 40" fill="none" class="drop-shadow-[0_0_10px_rgba(202,138,4,0.5)]">
+          <circle cx="20" cy="20" r="18" stroke="#c9a84c" stroke-width="1.5"></circle>
+          <path d="M12 26 L12 14 L17 11 L17 26 M17 18 L22 16 M22 26 L22 14 L28 11 L28 26" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M8 29 Q20 33 32 29" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </div>
+      <p class="text-yellow-600/80 uppercase tracking-[0.2em] text-sm font-bold mb-2">Liceo San José del Carmen</p>
+      <h1 class="text-4xl md:text-5xl text-yellow-500 mb-6 drop-shadow-md" style="font-family: 'Playfair Display', serif;">
+        Banda Escolar<br/>Material de Ensayo
+      </h1>
+      <div class="flex items-center justify-center gap-4 opacity-50">
+        <div class="h-px bg-yellow-500 w-16"></div>
+        <div class="w-2 h-2 rotate-45 bg-yellow-500"></div>
+        <div class="h-px bg-yellow-500 w-16"></div>
+      </div>
+    </header>
+
+    <nav class="bg-slate-950 border-y border-yellow-600/30 sticky top-0 z-10 shadow-lg">
+      <div class="max-w-4xl mx-auto flex flex-wrap justify-center sm:justify-between items-center p-4">
+        <div class="flex space-x-2 sm:space-x-6">
+          <button id="btn-repertorio" class="nav-btn text-yellow-400 border-b-2 border-yellow-400 pb-1 font-semibold transition">Marchas</button>
+          <button id="btn-instrumento" class="nav-btn text-slate-400 border-b-2 border-transparent hover:text-yellow-200 pb-1 font-semibold transition">Por Instrumento</button>
+          <button id="btn-ranking" class="nav-btn text-slate-400 border-b-2 border-transparent hover:text-yellow-200 pb-1 font-semibold transition">Ranking 🏆</button>
+        </div>
+        <button class="mt-4 sm:mt-0 px-6 py-2 bg-yellow-600 hover:bg-yellow-500 text-slate-950 font-bold rounded-full transition-all text-sm shadow-[0_0_10px_rgba(202,138,4,0.3)]">
+          Iniciar Sesión
+        </button>
+      </div>
+    </nav>
+
+    <div id="vistas-container">
+      
+      <main id="vista-repertorio" class="vista-activa max-w-4xl mx-auto p-6 mt-8 block">
+        <div class="flex justify-between items-end mb-8 border-b border-slate-700 pb-4">
+          <h2 class="text-3xl text-slate-100" style="font-family: 'Playfair Display', serif;">Todas las marchas</h2>
+          <p class="text-slate-400 text-sm">Banda completa · 11 marchas</p>
+        </div>
+
+        <div class="space-y-6">
+          {marchas.map((marcha) => (
+            <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-yellow-600/50 transition-colors shadow-lg">
+              <div class="flex items-center gap-4 mb-6">
+                <span class="text-3xl font-bold text-yellow-600/50">{marcha.num}</span>
+                <h3 class="text-xl font-semibold text-yellow-500">{marcha.nombre}</h3>
+              </div>
+              <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-slate-900 rounded-lg p-4 border border-slate-700/50 flex flex-col justify-center items-center h-32">
+                   <p class="text-slate-400 text-sm mb-2">Reproductor Interactivo</p>
+                   <p class="text-xs text-yellow-600/80">(Próximamente: Controles MIDI)</p>
+                </div>
+                <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700/50 aspect-video relative flex justify-center items-center">
+                  {marcha.videoId ? (
+                    <iframe src={`https://www.youtube.com/embed/${marcha.videoId}`} class="absolute top-0 left-0 w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  ) : (
+                    <p class="text-slate-500 text-sm flex items-center gap-2">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="#64748b"><path d="M8 5.14v14l11-7-11-7z"></path></svg>
+                      Video no disponible
+                    </p>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </main>
+
+      <main id="vista-instrumento" class="vista-oculta max-w-4xl mx-auto p-6 mt-4 hidden">
+
+        <div class="flex space-x-6 border-b border-slate-700 mb-8 px-2">
+          <button id="tab-pifano" class="text-yellow-400 border-b-2 border-yellow-400 pb-2 font-semibold text-sm uppercase tracking-wider flex items-center gap-2 transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 22 22 2"></path><circle cx="16" cy="8" r="1.5" fill="currentColor"></circle></svg>
+            Pífano
+          </button>
+          <button id="tab-corneta" class="text-slate-400 border-b-2 border-transparent hover:text-yellow-200 pb-2 font-semibold text-sm uppercase tracking-wider flex items-center gap-2 transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m3 11 18-5v12L3 14v-3z"></path><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"></path></svg>
+            Corneta
+          </button>
+          <button id="tab-caja" class="text-slate-400 border-b-2 border-transparent hover:text-yellow-200 pb-2 font-semibold text-sm uppercase tracking-wider flex items-center gap-2 transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7c0-2.2 4.5-4 10-4s10 1.8 10 4-4.5 4-10 4-10-1.8-10-4z"></path></svg>
+            Caja
+          </button>
+        </div>
+
+        <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 mb-6 flex items-center gap-4 shadow-lg">
+          <div class="w-14 h-14 rounded-full bg-slate-900 border border-yellow-600/30 flex items-center justify-center">
+            <svg id="icono-instrumento-actual" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M2 22 22 2"></path><circle cx="16" cy="8" r="1.5" fill="#c9a84c"></circle><circle cx="12" cy="12" r="1.5" fill="#c9a84c"></circle><circle cx="8" cy="16" r="1.5" fill="#c9a84c"></circle>
+            </svg>
+          </div>
+          <div>
+            <h2 id="titulo-instrumento-actual" class="text-2xl font-bold text-slate-100" style="font-family: 'Playfair Display', serif;">Pífano</h2>
+            <p id="desc-instrumento-actual" class="text-slate-400 text-sm">Flauta de pico de cuerpo cilíndrico</p>
+          </div>
+        </div>
+
+        <p class="text-slate-500 text-xs uppercase tracking-widest mb-4">11 marchas disponibles · Toca para expandir</p>
+
+        <div class="space-y-3">
+          {marchas.map((marcha) => (
+            <div class="acordeon-item bg-slate-800/50 border border-slate-700 rounded-lg overflow-hidden transition-all shadow-sm">
+              <button class="acordeon-btn w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/50 transition">
+                <div class="flex items-center gap-4">
+                  <span class="text-xl font-bold text-yellow-600/80">{marcha.num}</span>
+                  <span class="titulo-marcha-acordeon font-semibold text-slate-200">{marcha.nombre}</span>
+                </div>
+                <svg class="acordeon-icono w-5 h-5 text-slate-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              </button>
+              
+             <div class="acordeon-contenido hidden px-4 py-6 bg-slate-900 border-t border-slate-700">
+                
+                <div class="bg-slate-950 border border-slate-700 rounded-xl shadow-inner max-w-2xl mx-auto overflow-hidden">
+                  
+                  {marcha.midiPifano ? (
+                    <div>
+  
+  <div class="bg-slate-900 p-6 flex flex-col items-center justify-center border-b border-slate-700">
+     <p class="text-slate-500 text-xs uppercase tracking-widest mb-4 font-bold">Digitación del Pífano</p>
+     
+     <div class="w-full h-100 flex items-center justify-center p-2">
+        <img 
+          id={`img-digitacion-${marcha.num}`}
+          src="/img/digitacion/pifano/silencio.png" 
+          alt="Digitación Pífano"
+          class="max-w-full max-h-full object-contain transition-opacity duration-100 opacity-40"
+        />
+     </div>
+  </div>
+
+<midi-player 
+  id={`player-${marcha.num}`} 
+  src={marcha.midiPifano} 
+  sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+  style="visibility: hidden; height: 0; width: 0; position: absolute;"
+></midi-player>
+  <div class="p-5 flex items-center justify-between bg-slate-950">
+    <div class="flex bg-slate-800 rounded-lg p-1 controles-velocidad">
+      <button class="btn-vel px-3 py-1 text-xs font-bold text-slate-400" data-vel="0.5">50%</button>
+      <button class="btn-vel px-3 py-1 text-xs font-bold text-slate-400" data-vel="0.75">75%</button>
+      <button class="btn-vel px-3 py-1 text-xs font-bold bg-slate-700 text-yellow-400 activo" data-vel="1">100%</button>
+    </div>
+    
+    <button class="btn-play w-14 h-14 bg-yellow-600 rounded-full flex items-center justify-center" data-target={`player-${marcha.num}`}>
+      <svg class="icon-play" width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+      <svg class="icon-pause hidden" width="24" height="24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"></path></svg>
+    </button>
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+                    
+                  ) : (
+                    <div class="h-32 flex flex-col items-center justify-center gap-2">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M12 2v20"></path><path d="m15 22-6-15"></path><path d="m9 22 6-15"></path><circle cx="12" cy="22" r="2"></circle></svg>
+                      <p class="text-slate-500 text-sm font-mono tracking-wide">Audio MIDI en preparación...</p>
+                    </div>
+                  )}
+
+                </div>
+			  </div>
+			</div>
+		  ))}
+        </div>
+
+      </main>
+
+      <main id="vista-ranking" class="vista-oculta max-w-4xl mx-auto p-6 mt-8 hidden">
+        <div class="flex justify-between items-end mb-8 border-b border-slate-700 pb-4">
+          <h2 class="text-3xl text-slate-100" style="font-family: 'Playfair Display', serif;">Ranking de Práctica 🏆</h2>
+          <p class="text-slate-400 text-sm">Top de la semana</p>
+        </div>
+
+        <div class="bg-slate-800/50 border border-slate-700 rounded-xl overflow-hidden shadow-lg">
+          <div class="p-6 text-center border-b border-slate-700">
+            <h3 class="text-yellow-500 font-bold mb-2">¡Inicia sesión para ver tu posición!</h3>
+            <p class="text-sm text-slate-400">El ranking mide los minutos de práctica en el reproductor interactivo.</p>
+          </div>
+          
+          <div class="divide-y divide-slate-700/50">
+            <div class="flex items-center justify-between p-4 bg-slate-800/80">
+              <div class="flex items-center gap-4">
+                <span class="text-2xl font-black text-yellow-400 w-8 text-center">1</span>
+                <div class="w-10 h-10 rounded-full bg-slate-700 flex items-center justify-center font-bold text-slate-300">A.</div>
+                <span class="font-semibold text-slate-200">Alumno Ejemplo</span>
+              </div>
+              <span class="text-yellow-500 font-mono font-bold">345 pts</span>
+            </div>
+          </div>
+        </div>
+      </main>
+
+    </div>
+
+    <footer class="bg-slate-950 border-t border-yellow-600/20 py-8 mt-12 text-center">
+      <p class="text-xs text-slate-500 tracking-widest uppercase">
+        Banda Escolar · Liceo San José del Carmen · Material de Ensayo
+      </p>
+    </footer>
+
+<script>
+  // 1. NAVEGACIÓN Y ACORDEONES (Mantenemos lo que ya funciona)
+  document.querySelectorAll('.nav-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const vista = e.target.id.replace('btn-', 'vista-');
+      document.querySelectorAll('main').forEach(m => m.classList.add('hidden'));
+      document.getElementById(vista).classList.remove('hidden');
+    });
+  });
+
+  document.querySelectorAll('.acordeon-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const contenido = btn.nextElementSibling;
+      document.querySelectorAll('.acordeon-contenido').forEach(c => c.classList.add('hidden'));
+      contenido.classList.remove('hidden');
+    });
+  });
+
+  // 2. REPRODUCTOR Y VELOCIDAD
+  document.querySelectorAll('.btn-play').forEach(btn => {
+    btn.addEventListener('click', async function() {
+      const player = document.getElementById(this.getAttribute('data-target'));
+      if (typeof Tone !== 'undefined') await Tone.context.resume();
+      player.playing ? player.stop() : await player.start();
+    });
+  });
+
+  document.querySelectorAll('.btn-vel').forEach(btn => {
+    btn.addEventListener('click', function() {
+      const multi = parseFloat(this.getAttribute('data-vel'));
+      const player = this.closest('.acordeon-contenido').querySelector('midi-player');
+      if (!player.dataset.originalNs) player.dataset.originalNs = JSON.stringify(player.noteSequence);
+      const copia = JSON.parse(player.dataset.originalNs);
+      const factor = 1 / multi;
+      copia.notes.forEach(n => { n.startTime *= factor; n.endTime *= factor; });
+      copia.totalTime *= factor;
+      if (player.playing) player.stop();
+      player.noteSequence = copia;
+      if (player.playing) setTimeout(() => player.start(), 100);
+    });
+  });
+
+  // 3. DIGITACIÓN VISUAL (MEMORIA PERSISTENTE)
+  const mapa = { 74: "d5", 76: "e5", 78: "fs5", 79: "g5", 81: "a5", 83: "b5", 85: "cs6", 86: "d6" };
+  let estadoActual = {}; // { "01": "d5", "02": "silencio" }
+
+  setInterval(() => {
+    document.querySelectorAll('midi-player').forEach(player => {
+      const idMarcha = player.id.split('-')[1];
+      const img = document.getElementById(`img-digitacion-${idMarcha}`);
+      if (!img) return;
+
+      // Si el player está parado, forzamos silencio y reseteamos
+      if (!player.playing) {
+        if (estadoActual[idMarcha] !== 'silencio') {
+          img.src = "/img/digitacion/pifano/silencio.png";
+          img.style.opacity = "0.4";
+          estadoActual[idMarcha] = 'silencio';
+        }
+        return;
+      }
+
+      // Si está sonando, buscamos la nota
+      const nota = player.noteSequence.notes.find(n => 
+        player.currentTime >= n.startTime && player.currentTime <= n.endTime
+      );
+      
+      // LÓGICA: Solo si hay una nota real, actualizamos. 
+      // Si no hay nota (estamos en el aire entre notas), NO hacemos nada.
+      if (nota && mapa[nota.pitch] && estadoActual[idMarcha] !== mapa[nota.pitch]) {
+        img.src = `/img/digitacion/pifano/${mapa[nota.pitch]}.png`;
+        img.style.opacity = "1";
+        estadoActual[idMarcha] = mapa[nota.pitch];
+      }
+    });
+  }, 50); 
+</script>
+
+  </body>
 </html>
