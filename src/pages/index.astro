@@ -63,12 +63,39 @@ const marchas = [
           <button id="btn-instrumento" class="nav-btn text-slate-400 border-b-2 border-transparent hover:text-yellow-200 pb-1 font-semibold transition">Por Instrumento</button>
           <button id="btn-ranking" class="nav-btn text-slate-400 border-b-2 border-transparent hover:text-yellow-200 pb-1 font-semibold transition">Ranking 🏆</button>
         </div>
-        <button class="mt-4 sm:mt-0 px-6 py-2 bg-yellow-600 hover:bg-yellow-500 text-slate-950 font-bold rounded-full transition-all text-sm shadow-[0_0_10px_rgba(202,138,4,0.3)]">
-          Iniciar Sesión
+        <button id="btn-login" class="mt-4 sm:mt-0 px-5 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold uppercase tracking-wider text-xs rounded transition-colors">
+          INICIAR SESIÓN
         </button>
       </div>
     </nav>
+{/* BARRA DE LOGIN HORIZONTAL (SELECCIÓN SIMPLE) */}
+    <div id="login-banner" class="hidden bg-slate-950 border-b border-yellow-600/30 w-full p-4 transition-all shadow-lg">
+      <div class="max-w-4xl mx-auto flex flex-wrap items-end gap-4 sm:gap-6 justify-center sm:justify-start">
+        
+        {/* Botón X para cerrar */}
+        <button id="btn-cerrar-banner" class="text-slate-500 hover:text-slate-300 mb-2 transition-colors">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
 
+        {/* Selector de Nombre */}
+        <div class="flex flex-col">
+          <label class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Selecciona tu Nombre</label>
+          <div class="relative">
+            <select id="select-nombre" class="h-9 rounded bg-slate-900 border border-slate-700 text-slate-200 px-3 pr-8 w-64 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 transition-all text-sm appearance-none cursor-pointer">
+              <option value="">-- Buscar en lista --</option>
+              {/* Las opciones se llenarán automáticamente con JavaScript */}
+            </select>
+            {/* Flechita para el selector */}
+            <svg class="absolute right-3 top-2.5 w-4 h-4 text-slate-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </div>
+
+        {/* Botón ENTRAR */}
+        <button id="btn-guardar-login" class="h-9 px-6 bg-yellow-600 hover:bg-yellow-500 text-slate-950 font-bold tracking-widest uppercase text-sm rounded transition-colors mb-0 shadow-[0_0_10px_rgba(202,138,4,0.2)]">
+          ENTRAR
+        </button>
+      </div>
+    </div>
     <div id="vistas-container">
       
       <main id="vista-repertorio" class="vista-activa max-w-4xl mx-auto p-6 mt-8 block">
@@ -260,15 +287,32 @@ const marchas = [
     </footer>
 
 <script>
-// 1. NAVEGACIÓN Y ACORDEONES
+  // === IMPORTACIONES DE FIREBASE (NUBE) ===
+  import { initializeApp } from "firebase/app";
+  import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, query, orderBy } from "firebase/firestore";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBssDf2A_QSsS3bgdLaTbhvZRStRfBqEY",
+    authDomain: "banda-huique.firebaseapp.com",
+    projectId: "banda-huique",
+    storageBucket: "banda-huique.firebasestorage.app",
+    messagingSenderId: "910285903656",
+    appId: "1:910285903656:web:28bbf2e19728a1c6da621d",
+    measurementId: "G-17HHECV818"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  // === SECCIONES INTACTAS (1 A 4) ===
+
+  // 1. NAVEGACIÓN Y ACORDEONES
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
-      // Mostrar la vista correcta
       const vista = e.target.id.replace('btn-', 'vista-');
       document.querySelectorAll('main').forEach(m => m.classList.add('hidden'));
       document.getElementById(vista).classList.remove('hidden');
 
-      // Actualizar la línea amarilla en el menú superior
       document.querySelectorAll('.nav-btn').forEach(b => {
         b.classList.remove('text-yellow-400', 'border-yellow-400');
         b.classList.add('text-slate-400', 'border-transparent');
@@ -281,33 +325,25 @@ const marchas = [
   document.querySelectorAll('.acordeon-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const contenido = btn.nextElementSibling;
-      // 1. Miramos si el acordeón que tocaste está oculto en este momento
       const estabaOculto = contenido.classList.contains('hidden');
-
-      // 2. Por regla general, cerramos TODOS los acordeones
       document.querySelectorAll('.acordeon-contenido').forEach(c => c.classList.add('hidden'));
-
-      // 3. Si el que tocaste estaba oculto, lo abrimos. 
-      // (Si ya estaba abierto, la regla anterior lo cerró y simplemente se queda así)
       if (estabaOculto) {
         contenido.classList.remove('hidden');
       }
     });
   });
 
-// 2. REPRODUCTOR Y VELOCIDAD
+  // 2. REPRODUCTOR Y VELOCIDAD
   document.querySelectorAll('.btn-play').forEach(btn => {
     btn.addEventListener('click', async function() {
       const player = document.getElementById(this.getAttribute('data-target'));
       if (typeof Tone !== 'undefined') await Tone.context.resume();
 
       if (player.playing) {
-        // Si estaba sonando, lo pausamos y le quitamos el brillo al botón
         player.stop();
         this.classList.remove('text-yellow-400', 'border-yellow-400', 'bg-slate-800');
         this.classList.add('text-slate-300', 'border-transparent');
       } else {
-        // Si estaba en pausa, le damos play y encendemos el botón de amarillo
         await player.start();
         this.classList.remove('text-slate-300', 'border-transparent');
         this.classList.add('text-yellow-400', 'border-yellow-400', 'bg-slate-800');
@@ -317,18 +353,14 @@ const marchas = [
 
   document.querySelectorAll('.btn-vel').forEach(btn => {
     btn.addEventListener('click', function() {
-      // 1. Cambiar colores de los botones de velocidad
-      const grupo = this.parentElement; // El contenedor de los botones 50%, 75%, 100%
+      const grupo = this.parentElement;
       grupo.querySelectorAll('.btn-vel').forEach(b => {
-        // Apagamos todos los botones del grupo
         b.classList.remove('text-yellow-400', 'border-yellow-400', 'font-bold');
         b.classList.add('text-slate-400', 'border-transparent');
       });
-      // Encendemos solo el que el alumno acaba de presionar
       this.classList.remove('text-slate-400', 'border-transparent');
       this.classList.add('text-yellow-400', 'border-yellow-400', 'font-bold');
 
-      // 2. Lógica matemática de la velocidad
       const multi = parseFloat(this.getAttribute('data-vel'));
       const player = this.closest('.acordeon-contenido').querySelector('midi-player');
       
@@ -339,17 +371,16 @@ const marchas = [
       copia.notes.forEach(n => { n.startTime *= factor; n.endTime *= factor; });
       copia.totalTime *= factor;
       
-      // 3. Aplicar el cambio sin interrumpir si ya estaba sonando
-      const estabaSonando = player.playing; // Guardamos en memoria si estaba sonando
+      const estabaSonando = player.playing;
       if (estabaSonando) player.stop();
       player.noteSequence = copia;
-      if (estabaSonando) setTimeout(() => player.start(), 100); // Retoma automáticamente
+      if (estabaSonando) setTimeout(() => player.start(), 100);
     });
   });
 
   // 3. DIGITACIÓN VISUAL (MEMORIA PERSISTENTE)
   const mapa = { 74: "d5", 76: "e5", 78: "fs5", 79: "g5", 81: "a5", 83: "b5", 85: "cs6", 86: "d6" };
-  let estadoActual = {}; // { "01": "d5", "02": "silencio" }
+  let estadoActual = {};
 
   setInterval(() => {
     document.querySelectorAll('midi-player').forEach(player => {
@@ -357,7 +388,6 @@ const marchas = [
       const img = document.getElementById(`img-digitacion-${idMarcha}`);
       if (!img) return;
 
-      // Si el player está parado, forzamos silencio y reseteamos
       if (!player.playing) {
         if (estadoActual[idMarcha] !== 'silencio') {
           img.src = "/img/digitacion/pifano/silencio.png";
@@ -367,13 +397,10 @@ const marchas = [
         return;
       }
 
-      // Si está sonando, buscamos la nota
       const nota = player.noteSequence.notes.find(n => 
         player.currentTime >= n.startTime && player.currentTime <= n.endTime
       );
       
-      // LÓGICA: Solo si hay una nota real, actualizamos. 
-      // Si no hay nota (estamos en el aire entre notas), NO hacemos nada.
       if (nota && mapa[nota.pitch] && estadoActual[idMarcha] !== mapa[nota.pitch]) {
         img.src = `/img/digitacion/pifano/${mapa[nota.pitch]}.png`;
         img.style.opacity = "1";
@@ -381,13 +408,12 @@ const marchas = [
       }
     });
   }, 50); 
-// 4. CAMBIO DE INSTRUMENTO (Pífano, Corneta, Caja)
+
+  // 4. CAMBIO DE INSTRUMENTO (Pífano, Corneta, Caja)
   document.querySelectorAll('[id^="tab-"]').forEach(tab => {
     tab.addEventListener('click', (e) => {
-      // Saber qué instrumento se hizo clic (ej: "pifano")
       const instrumento = e.currentTarget.id.replace('tab-', '');
 
-      // 1. Cambiar colores de las pestañas
       document.querySelectorAll('[id^="tab-"]').forEach(t => {
         t.classList.remove('text-yellow-400', 'border-yellow-400');
         t.classList.add('text-slate-400', 'border-transparent');
@@ -395,7 +421,6 @@ const marchas = [
       e.currentTarget.classList.add('text-yellow-400', 'border-yellow-400');
       e.currentTarget.classList.remove('text-slate-400', 'border-transparent');
 
-      // 2. Cambiar título y descripción
       const titulos = {
         'pifano': { nombre: 'Pífano', desc: 'Flauta de pico de cuerpo cilíndrico' },
         'corneta': { nombre: 'Corneta', desc: 'Instrumento de viento metal' },
@@ -404,7 +429,6 @@ const marchas = [
       document.getElementById('titulo-instrumento-actual').innerText = titulos[instrumento].nombre;
       document.getElementById('desc-instrumento-actual').innerText = titulos[instrumento].desc;
 
-      // 3. Ocultar la digitación si NO es pífano
       document.querySelectorAll('.contenedor-digitacion').forEach(div => {
         if (instrumento === 'pifano') {
           div.classList.remove('hidden');
@@ -413,28 +437,23 @@ const marchas = [
         }
       });
 
-      // 4. Ocultar o Mostrar Reproductor MIDI vs Video de Corneta
       document.querySelectorAll('.acordeon-contenido').forEach(contenido => {
         const seccionMidi = contenido.querySelector('.seccion-midi');
         const seccionVideo = contenido.querySelector('.seccion-video-corneta');
         
         if (instrumento === 'corneta') {
-          // Si es corneta: Ocultar botones MIDI y mostrar Video
           if (seccionMidi) seccionMidi.classList.add('hidden');
           if (seccionVideo) seccionVideo.classList.remove('hidden');
         } else {
-          // Si es pífano o caja: Mostrar botones MIDI y ocultar Video
           if (seccionMidi) seccionMidi.classList.remove('hidden');
           if (seccionVideo) seccionVideo.classList.add('hidden');
         }
       });
 
-      // 5. Cerrar acordeones abiertos al cambiar de pestaña
       document.querySelectorAll('.acordeon-contenido').forEach(c => c.classList.add('hidden'));
 
-      // 6. Cambiar la pista MIDI de todos los reproductores (Solo si no es corneta)
       document.querySelectorAll('midi-player').forEach(player => {
-        if (player.playing) player.stop(); // Parar todo por si acaso
+        if (player.playing) player.stop();
         
         if (instrumento !== 'corneta') {
           const nuevaRuta = player.getAttribute(`data-${instrumento}`);
@@ -446,6 +465,203 @@ const marchas = [
       });
     });
   });
+
+  // === SECCIÓN 7 y 8: LÓGICA DE FIREBASE Y RANKING REAL ===
+  
+  // 7. SISTEMA DE LOGIN Y CHECK-IN EN LA NUBE
+  const alumnosPorCurso = {
+    "4° Básico": [
+      "Juanito Pérez", "José Pepito", "Nicolaso Gómez", "Cristóbal Pino", "Elena Barrera", "Isidora Martinez", "Julián Ávila", 
+      "Marcelo Farías", "Noelia Pérez", "Omar Yáñez", "Pablo Lizana", 
+      "Rocío Pino", "Theo Valdés", "Yeremi Olivares"
+    ],
+    "5° Básico": [
+      "Agustina Palomino", "Alexia Cáceres", "Florencia Pino", "Isabella Gallegos", 
+      "León Arriagada", "Paolo Millacaris", "Patricio Pérez"
+    ],
+    "6° Básico": [
+      "Diana Martínez", "Ian Vargas", "Javier Palacios", "Julio Tobar", 
+      "Matías González", "Nahin Pino", "Renata Alarcón"
+    ],
+    "7° Básico": [
+      "Alonso Palacios", "Ángel Jofré", "Emily González", "Javier Pino", 
+      "Maite Rojas", "Martin Cabello", "Paolo Ibarra", "Santiago Rubio", "Vincent Zapata"
+    ],
+    "8° Básico": [
+      "Dennise Ávila", "Joaquín Horta", "Pedro Pablo Calderón"
+    ],
+    "1° MA": [
+      "Alejandro Oteíza", "Carlos Barrios", "Nicol Nuñez", "Sofia Duarte"
+    ],
+    "1° MB": [
+      "Genesis Calderón", "Matias Chavez"
+    ],
+    "2° MA": [
+      "Alejandra Pérez", "Amarilis Leiva", "Aylin Fernández", "Camila Barrios", 
+      "Cristóbal Carrasco", "Cristofer Aguilera", "Francheska Lizana", 
+      "Krishna Saavedra", "Millaray Serrano", "Pía Pérez", "Valentina Chaparro"
+    ],
+    "2° MB": [
+      "Alexis Guerrero", "Álvaro Millacaris"
+    ],
+    "3° MA": [
+      "Joaquín Contreras", "Jonathan Núñez", "Maite Valdés", "Sebastián Gómez"
+    ],
+    "3° MB": [
+      "Genaro Pérez", "Jesús Gallegos", "José Romero"
+    ],
+    "3° MC": [
+      "David Molina", "Pedro Farias", "Valeria Campos"
+    ]
+  };
+
+  const btnLogin = document.getElementById('btn-login');
+  const loginBanner = document.getElementById('login-banner');
+  const btnCerrarBanner = document.getElementById('btn-cerrar-banner');
+  const btnGuardarLogin = document.getElementById('btn-guardar-login');
+  const selectNombre = document.getElementById('select-nombre');
+
+  // Llenar el selector
+  for (const curso in alumnosPorCurso) {
+    const grupo = document.createElement('optgroup');
+    grupo.label = curso; 
+    const alumnos = alumnosPorCurso[curso].sort();
+    alumnos.forEach(nombre => {
+      const option = document.createElement('option');
+      option.value = nombre;
+      option.textContent = nombre;
+      grupo.appendChild(option);
+    });
+    selectNombre.appendChild(grupo);
+  }
+
+  function actualizarUI() {
+    const nombre = localStorage.getItem('alumnoBanda');
+    if (nombre) {
+      btnLogin.innerHTML = `<span class="uppercase tracking-widest text-xs font-bold text-yellow-500">${nombre}</span>`;
+      btnLogin.className = "mt-4 sm:mt-0 px-4 py-2 bg-slate-900 border border-slate-700 hover:border-yellow-600/50 rounded transition-colors flex items-center cursor-pointer shadow-sm";
+    } else {
+      btnLogin.innerHTML = 'INICIAR SESIÓN';
+      btnLogin.className = "mt-4 sm:mt-0 px-5 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold uppercase tracking-wider text-xs rounded transition-colors cursor-pointer";
+    }
+  }
+
+  actualizarUI();
+
+  btnLogin.addEventListener('click', () => {
+    if (localStorage.getItem('alumnoBanda')) {
+      if(confirm('¿Quieres cerrar tu sesión de ensayo en este dispositivo?')) {
+        localStorage.removeItem('alumnoBanda');
+        actualizarUI();
+      }
+    } else {
+      loginBanner.classList.toggle('hidden');
+    }
+  });
+
+  btnCerrarBanner.addEventListener('click', () => {
+    loginBanner.classList.add('hidden');
+    selectNombre.value = ''; 
+  });
+
+  // Guardar en la NUBE (Firebase)
+  btnGuardarLogin.addEventListener('click', async () => {
+    const nombre = selectNombre.value;
+    
+    if (nombre) {
+      // Indicador de carga
+      const textoOriginal = btnGuardarLogin.innerHTML;
+      btnGuardarLogin.innerHTML = "CARGANDO...";
+      btnGuardarLogin.disabled = true;
+
+      try {
+        const alumnoRef = doc(db, "ranking", nombre);
+        const docSnap = await getDoc(alumnoRef);
+        
+        const hoy = new Date().toDateString();
+        let perfil = { puntos: 0, ultimaFecha: "", iniciosHoy: 0, nombre: nombre };
+
+        if (docSnap.exists()) {
+          perfil = docSnap.data();
+        }
+
+        if (perfil.ultimaFecha !== hoy) {
+          perfil.ultimaFecha = hoy;
+          perfil.iniciosHoy = 0;
+        }
+
+        if (perfil.iniciosHoy < 3) {
+          perfil.iniciosHoy++;
+          perfil.puntos += 15;
+          
+          await setDoc(alumnoRef, perfil);
+          alert(`¡Check-in exitoso, ${nombre}!\n\nLlevas ${perfil.iniciosHoy}/3 inicios diarios.\nSumaste 15 puntos para el ranking global 🏆\n\nPuntaje total: ${perfil.puntos} pts.`);
+        } else {
+          alert(`¡Hola de nuevo, ${nombre}!\n\nYa alcanzaste el límite de 3/3 inicios diarios para el ranking hoy.\nSigue ensayando, pero no sumarás puntos extra hasta mañana.`);
+        }
+
+        localStorage.setItem('alumnoBanda', nombre); 
+        loginBanner.classList.add('hidden'); 
+        selectNombre.value = '';
+        actualizarUI(); 
+
+      } catch (error) {
+        console.error("Error al guardar en Firebase:", error);
+        alert("Hubo un error conectando al servidor. Inténtalo de nuevo.");
+      } finally {
+        btnGuardarLogin.innerHTML = textoOriginal;
+        btnGuardarLogin.disabled = false;
+      }
+      
+    } else {
+      selectNombre.classList.add('ring-2', 'ring-red-500');
+      setTimeout(() => selectNombre.classList.remove('ring-2', 'ring-red-500'), 1500);
+    }
+  });
+
+  // 8. ESCUCHADOR EN TIEMPO REAL PARA EL RANKING
+  const contenedorRanking = document.getElementById('tabla-ranking-contenedor');
+  
+  if (contenedorRanking) {
+    const q = query(collection(db, "ranking"), orderBy("puntos", "desc"));
+    
+    onSnapshot(q, (querySnapshot) => {
+      if (querySnapshot.empty) {
+        contenedorRanking.innerHTML = `
+          <div class="bg-slate-900/50 border border-slate-800 rounded-lg p-8 text-center text-slate-500 text-sm">
+            Aún no hay registros de ensayo. ¡Sé el primero en sumar puntos!
+          </div>`;
+        return;
+      }
+
+      let html = `<div class="bg-slate-900 border border-slate-800 rounded-md overflow-hidden shadow-2xl">`;
+      let index = 0;
+      
+      querySnapshot.forEach((doc) => {
+        const alumno = doc.data();
+        
+        let posicion = "";
+        if (index === 0) posicion = "🥇";
+        else if (index === 1) posicion = "🥈";
+        else if (index === 2) posicion = "🥉";
+        else posicion = `<span class="text-slate-600 font-mono text-xs w-5 inline-block">${index + 1}.</span>`;
+
+        html += `
+          <div class="flex justify-between items-center p-4 ${index !== querySnapshot.size - 1 ? 'border-b border-slate-800/60' : ''} ${index < 3 ? 'bg-slate-900/30' : ''}">
+            <div class="flex items-center gap-3">
+              <div class="w-6 text-center">${posicion}</div>
+              <span class="text-sm font-medium text-slate-200">${alumno.nombre}</span>
+            </div>
+            <span class="text-sm font-black text-yellow-500 font-mono">${alumno.puntos} PTS</span>
+          </div>
+        `;
+        index++;
+      });
+
+      html += `</div>`;
+      contenedorRanking.innerHTML = html;
+    });
+  }
 </script>
 
   </body>
