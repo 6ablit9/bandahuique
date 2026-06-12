@@ -283,6 +283,9 @@ const marchas = [
         <p class="text-xs text-slate-400 mb-4">
           Para mantener una competencia justa, hay un límite de <strong class="text-slate-200">3 registros diarios</strong> (máx. 45 puntos por día). El contador se reinicia cada medianoche.
         </p>
+        <p class="text-xs text-slate-400 mb-4">
+          Solo se puede iniciar sesión cada <strong class="text-slate-200">20 minutos</strong> 
+        </p>
         <div class="bg-slate-900/60 border border-yellow-600/30 rounded py-2 px-4 inline-block">
           <p class="text-xs text-yellow-500 font-medium tracking-wide">
             🏆 Habrá premios a fin de año para los primeros 3 puestos 🏆<br class="hidden sm:block" /> Cortesía del profe Pablo
@@ -668,23 +671,29 @@ const marchas = [
       let index = 0;
       
       querySnapshot.forEach((doc) => {
-        const alumno = doc.data();
-        
-        let posicion = "";
-        if (index === 0) posicion = "🥇";
-        else if (index === 1) posicion = "🥈";
-        else if (index === 2) posicion = "🥉";
-        else posicion = `<span class="text-slate-600 font-mono text-xs w-5 inline-block">${index + 1}.</span>`;
+        // Dentro del bucle querySnapshot.forEach((doc) => { ...
+const alumno = doc.data();
 
-        html += `
-          <div class="flex justify-between items-center p-4 ${index !== querySnapshot.size - 1 ? 'border-b border-slate-800/60' : ''} ${index < 3 ? 'bg-slate-900/30' : ''}">
-            <div class="flex items-center gap-3">
-              <div class="w-6 text-center">${posicion}</div>
-              <span class="text-sm font-medium text-slate-200">${alumno.nombre}</span>
-            </div>
-            <span class="text-sm font-black text-yellow-500 font-mono">${alumno.puntos} PTS</span>
-          </div>
-        `;
+// Estilos para el podio (Top 3)
+const esTop = index < 3;
+const fondoFila = esTop ? "bg-slate-800/50 border-yellow-500/20" : "border-b border-slate-800/60";
+const brilloTexto = esTop ? "text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] font-bold" : "text-slate-200";
+
+let posicion = "";
+if (index === 0) posicion = "🥇";
+else if (index === 1) posicion = "🥈";
+else if (index === 2) posicion = "🥉";
+else posicion = `<span class="text-slate-600 font-mono text-xs w-5 inline-block">${index + 1}.</span>`;
+
+html += `
+  <div class="flex justify-between items-center p-4 ${fondoFila} transition-all duration-300">
+    <div class="flex items-center gap-3">
+      <div class="w-6 text-center">${posicion}</div>
+      <span class="text-sm ${brilloTexto}">${alumno.nombre}</span>
+    </div>
+    <span class="text-sm font-black text-yellow-500 font-mono drop-shadow-[0_0_5px_rgba(234,179,8,0.3)]">${alumno.puntos} PTS</span>
+  </div>
+`;
         index++;
       });
 
