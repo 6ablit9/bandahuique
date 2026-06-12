@@ -577,12 +577,11 @@ const marchas = [
     selectNombre.value = ''; 
   });
 
-  // Guardar en la NUBE (Firebase)
+  // Guardar en la NUBE (Firebase) con restricción de tiempo
   btnGuardarLogin.addEventListener('click', async () => {
     const nombre = selectNombre.value;
     
     if (nombre) {
-      // Indicador de carga
       const textoOriginal = btnGuardarLogin.innerHTML;
       btnGuardarLogin.innerHTML = "CARGANDO...";
       btnGuardarLogin.disabled = true;
@@ -591,26 +590,44 @@ const marchas = [
         const alumnoRef = doc(db, "ranking", nombre);
         const docSnap = await getDoc(alumnoRef);
         
-        const hoy = new Date().toDateString();
-        let perfil = { puntos: 0, ultimaFecha: "", iniciosHoy: 0, nombre: nombre };
+        const ahora = new Date();
+        const hoy = ahora.toDateString();
+        
+        let perfil = { 
+          puntos: 0, 
+          ultimaFecha: "", 
+          iniciosHoy: 0, 
+          nombre: nombre, 
+          ultimoCheckIn: 0 // Nueva variable para controlar los 20 min
+        };
 
         if (docSnap.exists()) {
           perfil = docSnap.data();
         }
 
+        // Reiniciar si es día nuevo
         if (perfil.ultimaFecha !== hoy) {
           perfil.ultimaFecha = hoy;
           perfil.iniciosHoy = 0;
         }
 
+        // Lógica de 20 minutos
+        const tiempoTranscurrido = (ahora.getTime() - perfil.ultimoCheckIn) / 1000 / 60; // en minutos
+
         if (perfil.iniciosHoy < 3) {
-          perfil.iniciosHoy++;
-          perfil.puntos += 15;
-          
-          await setDoc(alumnoRef, perfil);
-          alert(`¡Check-in exitoso, ${nombre}!\n\nLlevas ${perfil.iniciosHoy}/3 inicios diarios.\nSumaste 15 puntos para el ranking global 🏆\n\nPuntaje total: ${perfil.puntos} pts.`);
+          if (perfil.ultimoCheckIn === 0 || tiempoTranscurrido >= 20) {
+            perfil.iniciosHoy++;
+            perfil.puntos += 15;
+            perfil.ultimoCheckIn = ahora.getTime(); // Guardamos el tiempo actual
+            
+            await setDoc(alumnoRef, perfil);
+            alert(`¡Check-in exitoso, ${nombre}!\n\nLlevas ${perfil.iniciosHoy}/3 sesiones hoy.\nHas sumado 15 puntos.\n\n(Recuerda: tu próxima sesión puntuable será en 20 minutos).`);
+          } else {
+            const minutosFaltantes = Math.ceil(20 - tiempoTranscurrido);
+            alert(`¡Calma, ${nombre}!\n\nDebes esperar al menos 20 minutos entre sesiones para sumar puntos.\n\nTe faltan ${minutosFaltantes} minutos para el siguiente check-in.`);
+          }
         } else {
-          alert(`¡Hola de nuevo, ${nombre}!\n\nYa alcanzaste el límite de 3/3 inicios diarios para el ranking hoy.\nSigue ensayando, pero no sumarás puntos extra hasta mañana.`);
+          alert(`¡Ya alcanzaste el límite de 3/3 sesiones hoy!\nNos vemos mañana para seguir sumando.`);
         }
 
         localStorage.setItem('alumnoBanda', nombre); 
@@ -619,8 +636,8 @@ const marchas = [
         actualizarUI(); 
 
       } catch (error) {
-        console.error("Error al guardar en Firebase:", error);
-        alert("Hubo un error conectando al servidor. Inténtalo de nuevo.");
+        console.error("Error al guardar:", error);
+        alert("Error de conexión. Inténtalo de nuevo.");
       } finally {
         btnGuardarLogin.innerHTML = textoOriginal;
         btnGuardarLogin.disabled = false;
