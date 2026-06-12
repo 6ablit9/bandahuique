@@ -34,7 +34,13 @@ const marchas = [
   </head>
 
   <body class="bg-slate-900 text-slate-200 min-h-screen" style="font-family: 'Source Sans 3', sans-serif;">
-    
+    <div id="login-password" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-xl">
+  <div class="bg-slate-900 border border-slate-700 p-8 rounded-xl text-center shadow-2xl">
+    <h2 class="text-slate-200 font-bold mb-4">Acceso Restringido</h2>
+    <input type="password" id="input-password" placeholder="Contraseña..." class="bg-slate-800 text-white px-4 py-2 rounded mb-4 w-full border border-slate-600 outline-none focus:border-yellow-600">
+    <button id="btn-acceder" class="w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold py-2 rounded transition-all">INGRESAR</button>
+  </div>
+</div>
     <header class="pt-12 pb-8 px-4 text-center">
       <div class="flex justify-center mb-4">
         <img 
@@ -551,13 +557,15 @@ const marchas = [
     selectNombre.appendChild(grupo);
   }
 
+// Función para actualizar el botón de arriba
   function actualizarUI() {
     const nombre = localStorage.getItem('alumnoBanda');
     if (nombre) {
       btnLogin.innerHTML = `<span class="uppercase tracking-widest text-xs font-bold text-yellow-500">${nombre}</span>`;
       btnLogin.className = "mt-4 sm:mt-0 px-4 py-2 bg-slate-900 border border-slate-700 hover:border-yellow-600/50 rounded transition-colors flex items-center cursor-pointer shadow-sm";
     } else {
-      btnLogin.innerHTML = 'INICIAR SESIÓN';
+      // AQUÍ ESTÁ EL CAMBIO DE TEXTO
+      btnLogin.innerHTML = 'REGISTRA TU PRÁCTICA';
       btnLogin.className = "mt-4 sm:mt-0 px-5 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold uppercase tracking-wider text-xs rounded transition-colors cursor-pointer";
     }
   }
@@ -700,6 +708,25 @@ html += `
       html += `</div>`;
       contenedorRanking.innerHTML = html;
     });
+  }
+  const capaBloqueo = document.getElementById('login-password');
+  const inputPass = document.getElementById('input-password');
+  const btnAcceder = document.getElementById('btn-acceder');
+
+  btnAcceder.addEventListener('click', () => {
+    if (inputPass.value === 'bandaliceo2026') {
+      capaBloqueo.style.opacity = '0';
+      setTimeout(() => capaBloqueo.classList.add('hidden'), 500);
+      localStorage.setItem('accesoConcedido', 'true');
+    } else {
+      inputPass.classList.add('ring-2', 'ring-red-500');
+      setTimeout(() => inputPass.classList.remove('ring-2', 'ring-red-500'), 500);
+    }
+  });
+
+  // Verificar si ya ingresó antes
+  if (localStorage.getItem('accesoConcedido') === 'true') {
+    capaBloqueo.classList.add('hidden');
   }
 </script>
 
