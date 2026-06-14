@@ -2,15 +2,114 @@
 import '../styles/global.css';
 
 const marchas = [
-  { num: "01", nombre: "Marcha 1", orden: "Cornetas A (x2) -> Pífanos + Lira A (x2) -> Pífanos + Lira B (x2)", videoId: "P7joLvEg4vg", videoCorneta: "QUWLudCrrR8", midiPifano: "/midi/pifano/marcha-1.mid", midiCorneta: "/midi/corneta/marcha-1.mid", midiCaja: "/midi/caja/marcha-1.mid" },
-  { num: "02", nombre: "Marcha 2 de aproximación", orden: "Esta marcha va sin corneta/pífano/lira", videoId: "WKwEWhg30Vk", videoCorneta: null, midiPifano: "/midi/pifano/marcha-2.mid", midiCorneta: "/midi/corneta/marcha-2.mid", midiCaja: "/midi/caja/marcha-2.mid" },
-  { num: "03", nombre: "Marcha 3", orden: "Cornetas (x2) -> Pífanos + Lira Parte (x2)", videoId: "IQ2SyL-HV_c", videoCorneta: "4RmbCJjMQNA", midiPifano: "/midi/pifano/marcha-3.mid", midiCorneta: "/midi/corneta/marcha-3.mid", midiCaja: "/midi/caja/marcha-3.mid" },
-  { num: "04", nombre: "Marcha 5", orden: "Cajas (x1) -> Cornetas A (x2) y B (x1) -> Pífanos + Lira A (x2) y B (x1)", videoId: "uoFiYoaTHT8", videoCorneta: "bIe4MDJMpkU", midiPifano: "/midi/pifano/marcha-4.mid", midiCorneta: "/midi/corneta/marcha-4.mid", midiCaja: "/midi/caja/marcha-4.mid" },
-  { num: "05", nombre: "Marcha Jinete", orden: "Cornetas -> Pifanos + Lira", videoId: "OYDRJ_p80T0", videoCorneta: "JOu802LzRj4", midiPifano: "/midi/pifano/marcha-5.mid", midiCorneta: "/midi/corneta/marcha-5.mid", midiCaja: "/midi/caja/marcha-5.mid" },
-  { num: "06", nombre: "Marcha Honores", orden: "Cornetas -> Pífanos + Lira", videoId: "kfGbA0GJWN4", videoCorneta: null, midiPifano: "/midi/pifano/marcha-6.mid", midiCorneta: "/midi/corneta/marcha-6.mid", midiCaja: "/midi/caja/marcha-6.mid" },
-  { num: "07", nombre: "Traspaso", orden: "Va con Lira", videoId: "1y0CG1KLt2E", videoCorneta: null, midiPifano: "/midi/pifano/marcha-7.mid", midiCorneta: "/midi/corneta/marcha-7.mid", midiCaja: "/midi/caja/marcha-7.mid" },
-  { num: "08", nombre: "Marcha de Parada + Traspaso", orden: "Se toca dos veces lo que se tocaba antes del traspaso", videoId: "Q0TF0_GfvZA", videoCorneta: null, midiPifano: "/midi/pifano/marcha-8.mid", midiCorneta: "/midi/corneta/marcha-8.mid", midiCaja: "/midi/caja/marcha-8.mid" },
-  { num: "09", nombre: "Himno del liceo", orden: "Aún se está armando", videoId: "NizMVmXtlxg", videoCorneta: "jnXv1Y9qlVM", midiPifano: "/midi/pifano/marcha-9.mid", midiCorneta: "/midi/corneta/marcha-9.mid", midiCaja: "/midi/caja/marcha-9.mid" }
+  { 
+    num: "01", 
+    nombre: "Marcha 1", 
+    orden: "Cornetas A (x2) -> Pífanos + Lira A (x2) -> Pífanos + Lira B (x2)", 
+    videoId: "P7joLvEg4vg", 
+    videoPifano: "ID_PIFANO_AQUI",
+    videoCorneta: "QUWLudCrrR8", 
+    videoCaja: "ID_CAJA_AQUI",
+    videoLira: "ID_LIRA_AQUI",
+    midiPifano: "/midi/pifano/marcha-1.mid", 
+    midiCorneta: "/midi/corneta/marcha-1.mid" 
+  },
+  { 
+    num: "02", 
+    nombre: "Marcha 2 de aproximación", 
+    orden: "Esta marcha va sin corneta/pífano/lira", 
+    videoId: "WKwEWhg30Vk", 
+    videoPifano: null,
+    videoCorneta: null, 
+    videoCaja: null,
+    videoLira: null,
+    midiPifano: "/midi/pifano/marcha-2.mid", 
+    midiCorneta: "/midi/corneta/marcha-2.mid" 
+  },
+  { 
+    num: "03", 
+    nombre: "Marcha 3", 
+    orden: "Cornetas (x2) -> Pífanos + Lira Parte (x2)", 
+    videoId: "IQ2SyL-HV_c", 
+    videoPifano: null,
+    videoCorneta: "4RmbCJjMQNA", 
+    videoCaja: null,
+    videoLira: null,
+    midiPifano: "/midi/pifano/marcha-3.mid", 
+    midiCorneta: "/midi/corneta/marcha-3.mid" 
+  },
+  { 
+    num: "04", 
+    nombre: "Marcha 5", 
+    orden: "Cajas (x1) -> Cornetas A (x2) y B (x1) -> Pífanos + Lira A (x2) y B (x1)", 
+    videoId: "uoFiYoaTHT8", 
+    videoPifano: null,
+    videoCorneta: "bIe4MDJMpkU", 
+    videoCaja: null,
+    videoLira: null,
+    midiPifano: "/midi/pifano/marcha-4.mid", 
+    midiCorneta: "/midi/corneta/marcha-4.mid" 
+  },
+  { 
+    num: "05", 
+    nombre: "Marcha Jinete", 
+    orden: "Cornetas -> Pifanos + Lira", 
+    videoId: "OYDRJ_p80T0", 
+    videoPifano: null,
+    videoCorneta: "JOu802LzRj4", 
+    videoCaja: null,
+    videoLira: null,
+    midiPifano: "/midi/pifano/marcha-5.mid", 
+    midiCorneta: "/midi/corneta/marcha-5.mid" 
+  },
+  { 
+    num: "06", 
+    nombre: "Marcha Honores", 
+    orden: "Cornetas -> Pífanos + Lira", 
+    videoId: "kfGbA0GJWN4", 
+    videoPifano: null,
+    videoCorneta: null, 
+    videoCaja: null,
+    videoLira: null,
+    midiPifano: "/midi/pifano/marcha-6.mid", 
+    midiCorneta: "/midi/corneta/marcha-6.mid" 
+  },
+  { 
+    num: "07", 
+    nombre: "Traspaso", 
+    orden: "Va con Lira", 
+    videoId: "1y0CG1KLt2E", 
+    videoPifano: null,
+    videoCorneta: null, 
+    videoCaja: null,
+    videoLira: null,
+    midiPifano: "/midi/pifano/marcha-7.mid", 
+    midiCorneta: "/midi/corneta/marcha-7.mid" 
+  },
+  { 
+    num: "08", 
+    nombre: "Marcha de Parada + Traspaso", 
+    orden: "Se toca dos veces lo que se tocaba antes del traspaso", 
+    videoId: "Q0TF0_GfvZA", 
+    videoPifano: null,
+    videoCorneta: null, 
+    videoCaja: null,
+    videoLira: null,
+    midiPifano: "/midi/pifano/marcha-8.mid", 
+    midiCorneta: "/midi/corneta/marcha-8.mid" 
+  },
+  { 
+    num: "09", 
+    nombre: "Himno del liceo", 
+    orden: "Aún se está armando", 
+    videoId: "NizMVmXtlxg", 
+    videoPifano: null,
+    videoCorneta: "jnXv1Y9qlVM", 
+    videoCaja: null,
+    videoLira: null,
+    midiPifano: "/midi/pifano/marcha-9.mid", 
+    midiCorneta: "/midi/corneta/marcha-9.mid" 
+  }
 ];
 ---
 
@@ -20,36 +119,37 @@ const marchas = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />  
     <title>Banda Escolar Liceo San José del Carmen - Material de Ensayo</title>
     <meta property="og:title" content="Banda Escolar Liceo San José del Carmen" />
-<meta property="og:description" content="Material de ensayo, partituras y marchas para los integrantes de la banda." />
-<meta property="og:image" content="https://bandahuique.cl/img/portada-social.png" />
-<meta property="og:url" content="https://bandahuique.cl" />
-<meta property="og:type" content="website" />
+    <meta property="og:description" content="Material de ensayo, partituras y marchas para los integrantes de la banda." />
+    <meta property="og:image" content="https://bandahuique.cl/img/portada-social.png" />
+    <meta property="og:url" content="https://bandahuique.cl" />
+    <meta property="og:type" content="website" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:image" content="https://bandahuique.cl/img/portada-social.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://bandahuique.cl/img/portada-social.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet" />
-	<script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
+    <script src="https://cdn.jsdelivr.net/combine/npm/tone@14.7.58,npm/@magenta/music@1.23.1/es6/core.js,npm/focus-visible@5,npm/html-midi-player@1.5.0"></script>
   </head>
 
   <body class="bg-slate-900 text-slate-200 min-h-screen" style="font-family: 'Source Sans 3', sans-serif;">
     <div id="login-password" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-xl">
-  <div class="bg-slate-900 border border-slate-700 p-8 rounded-xl text-center shadow-2xl">
-    <h2 class="text-slate-200 font-bold mb-4">Acceso Restringido</h2>
-    <input type="password" id="input-password" placeholder="Contraseña..." class="bg-slate-800 text-white px-4 py-2 rounded mb-4 w-full border border-slate-600 outline-none focus:border-yellow-600">
-    <button id="btn-acceder" class="w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold py-2 rounded transition-all">INGRESAR</button>
-  </div>
-</div>
+      <div class="bg-slate-900 border border-slate-700 p-8 rounded-xl text-center shadow-2xl">
+        <h2 class="text-slate-200 font-bold mb-4">Acceso Restringido</h2>
+        <input type="password" id="input-password" placeholder="Contraseña..." class="bg-slate-800 text-white px-4 py-2 rounded mb-4 w-full border border-slate-600 outline-none focus:border-yellow-600">
+        <button id="btn-acceder" class="w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold py-2 rounded transition-all">INGRESAR</button>
+      </div>
+    </div>
+
     <header class="pt-12 pb-8 px-4 text-center">
       <div class="flex justify-center mb-4">
         <img 
-  src="/img/logo-banda.svg" 
-  alt="Logo de la banda" 
-  width="60" 
-  height="60" 
-  class="drop-shadow-[0_0_10px_rgba(202,138,4,0.5)] object-contain" 
-/>
+          src="/img/logo-banda.svg" 
+          alt="Logo de la banda" 
+          width="60" 
+          height="60" 
+          class="drop-shadow-[0_0_10px_rgba(202,138,4,0.5)] object-contain" 
+        />
       </div>
       <p class="text-yellow-600/80 uppercase tracking-[0.2em] text-sm font-bold mb-2">Liceo San José del Carmen</p>
       <h1 class="text-4xl md:text-5xl text-yellow-500 mb-6 drop-shadow-md" style="font-family: 'Playfair Display', serif;">
@@ -74,34 +174,28 @@ const marchas = [
         </button>
       </div>
     </nav>
-{/* BARRA DE LOGIN HORIZONTAL (SELECCIÓN SIMPLE) */}
+
+    {/* BARRA DE LOGIN HORIZONTAL */}
     <div id="login-banner" class="hidden bg-slate-950 border-b border-yellow-600/30 w-full p-4 transition-all shadow-lg">
       <div class="max-w-4xl mx-auto flex flex-wrap items-end gap-4 sm:gap-6 justify-center sm:justify-start">
-        
-        {/* Botón X para cerrar */}
         <button id="btn-cerrar-banner" class="text-slate-500 hover:text-slate-300 mb-2 transition-colors">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
         </button>
-
-        {/* Selector de Nombre */}
         <div class="flex flex-col">
           <label class="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Selecciona tu Nombre</label>
           <div class="relative">
             <select id="select-nombre" class="h-9 rounded bg-slate-900 border border-slate-700 text-slate-200 px-3 pr-8 w-64 focus:outline-none focus:border-yellow-500 focus:ring-1 focus:ring-yellow-500 transition-all text-sm appearance-none cursor-pointer">
               <option value="">-- Buscar en lista --</option>
-              {/* Las opciones se llenarán automáticamente con JavaScript */}
             </select>
-            {/* Flechita para el selector */}
             <svg class="absolute right-3 top-2.5 w-4 h-4 text-slate-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </div>
         </div>
-
-        {/* Botón ENTRAR */}
         <button id="btn-guardar-login" class="h-9 px-6 bg-yellow-600 hover:bg-yellow-500 text-slate-950 font-bold tracking-widest uppercase text-sm rounded transition-colors mb-0 shadow-[0_0_10px_rgba(202,138,4,0.2)]">
           ENTRAR
         </button>
       </div>
     </div>
+    
     <div id="vistas-container">
       
       <main id="vista-repertorio" class="vista-activa max-w-4xl mx-auto p-6 mt-8 block">
@@ -111,40 +205,40 @@ const marchas = [
         </div>
 
         <div class="space-y-6">
-{marchas.map((marcha) => (
-        <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-yellow-600/50 transition-colors shadow-lg">
-          <div class="flex items-center gap-4 mb-6">
-            <span class="text-3xl font-bold text-yellow-600/50">{marcha.num}</span>
-            <h3 class="text-xl font-semibold text-yellow-500">{marcha.nombre}</h3>
-          </div>
+        {marchas.map((marcha) => (
+          <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 hover:border-yellow-600/50 transition-colors shadow-lg">
+            <div class="flex items-center gap-4 mb-6">
+              <span class="text-3xl font-bold text-yellow-600/50">{marcha.num}</span>
+              <h3 class="text-xl font-semibold text-yellow-500">{marcha.nombre}</h3>
+            </div>
 
-          <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700/50 aspect-video relative flex justify-center items-center">
-            {marcha.videoId ? (
-              <iframe src={`https://www.youtube.com/embed/${marcha.videoId}`} class="absolute top-0 left-0 w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            ) : (
-              <p class="text-slate-500 text-sm flex items-center gap-2">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#64748b"><path d="M8 5.14v14l11-7-11-7z"></path></svg>
-                Video no disponible
-              </p>
+            <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700/50 aspect-video relative flex justify-center items-center">
+              {marcha.videoId ? (
+                <iframe src={`https://www.youtube.com/embed/${marcha.videoId}`} class="absolute top-0 left-0 w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              ) : (
+                <p class="text-slate-500 text-sm flex items-center gap-2">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="#64748b"><path d="M8 5.14v14l11-7-11-7z"></path></svg>
+                  Video no disponible
+                </p>
+              )}
+            </div>
+
+            {marcha.orden && (
+              <div class="mt-4 p-4 bg-slate-900/80 rounded-lg border-l-4 border-l-yellow-600 shadow-inner">
+                <p class="text-slate-200 text-base leading-relaxed tracking-wide">
+                  <strong class="font-bold text-yellow-500 mr-2">ORDEN:</strong>
+                  {marcha.orden}
+                </p>
+              </div>
             )}
           </div>
-
-{/* Espacio para la orden escrita */}
-          {marcha.orden && (
-            <div class="mt-4 p-4 bg-slate-900/80 rounded-lg border-l-4 border-l-yellow-600 shadow-inner">
-              <p class="text-slate-200 text-base leading-relaxed tracking-wide">
-                <strong class="font-bold text-yellow-500 mr-2">ORDEN:</strong>
-                {marcha.orden}
-              </p>
-            </div>
-          )}
+        ))}
         </div>
-      ))}
       </main>
 
       <main id="vista-instrumento" class="vista-oculta max-w-4xl mx-auto p-6 mt-4 hidden">
-
-        <div class="flex space-x-6 border-b border-slate-700 mb-8 px-2">
+        {/* TABS DE INSTRUMENTOS */}
+        <div class="flex space-x-6 border-b border-slate-700 mb-8 px-2 overflow-x-auto whitespace-nowrap">
           <button id="tab-pifano" class="text-yellow-400 border-b-2 border-yellow-400 pb-2 font-semibold text-sm uppercase tracking-wider flex items-center gap-2 transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 22 22 2"></path><circle cx="16" cy="8" r="1.5" fill="currentColor"></circle></svg>
             Pífano
@@ -157,10 +251,14 @@ const marchas = [
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 7c0-2.2 4.5-4 10-4s10 1.8 10 4-4.5 4-10 4-10-1.8-10-4z"></path></svg>
             Caja
           </button>
+          <button id="tab-lira" class="text-slate-400 border-b-2 border-transparent hover:text-yellow-200 pb-2 font-semibold text-sm uppercase tracking-wider flex items-center gap-2 transition">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></svg>
+            Lira
+          </button>
         </div>
 
         <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 mb-6 flex items-center gap-4 shadow-lg">
-          <div class="w-14 h-14 rounded-full bg-slate-900 border border-yellow-600/30 flex items-center justify-center">
+          <div class="w-14 h-14 rounded-full bg-slate-900 border border-yellow-600/30 flex items-center justify-center shrink-0">
             <svg id="icono-instrumento-actual" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#c9a84c" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M2 22 22 2"></path><circle cx="16" cy="8" r="1.5" fill="#c9a84c"></circle><circle cx="12" cy="12" r="1.5" fill="#c9a84c"></circle><circle cx="8" cy="16" r="1.5" fill="#c9a84c"></circle>
             </svg>
@@ -172,10 +270,11 @@ const marchas = [
         </div>
 
         <p class="text-slate-500 text-xs uppercase tracking-widest mb-4">11 marchas disponibles · Toca para expandir</p>
-
+        
         <div class="space-y-3">
           {marchas.map((marcha) => (
             <div class="acordeon-item bg-slate-800/50 border border-slate-700 rounded-lg overflow-hidden transition-all shadow-sm">
+              
               <button class="acordeon-btn w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/50 transition">
                 <div class="flex items-center gap-4">
                   <span class="text-xl font-bold text-yellow-600/80">{marcha.num}</span>
@@ -184,77 +283,128 @@ const marchas = [
                 <svg class="acordeon-icono w-5 h-5 text-slate-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
               
-             <div class="acordeon-contenido hidden px-4 py-6 bg-slate-900 border-t border-slate-700">
-                <div class="bg-slate-950 border border-slate-700 rounded-xl shadow-inner max-w-2xl mx-auto overflow-hidden">
+             <div class="acordeon-contenido hidden bg-slate-900 border-t border-slate-700">
                   
-                  {marcha.midiPifano ? (
-                    <div>
+                  {/* ======================= PÍFANO ======================= */}
+                  <div class="seccion-inst seccion-pifano block w-full">
+                    
+                    <div class="p-6 pb-4 text-center">
+                      <h4 class="text-yellow-500 font-bold mb-4 tracking-widest uppercase text-sm">Pífano</h4>
+                      <div class="inline-flex bg-slate-950 rounded-lg p-1 border border-slate-800 shadow-inner">
+                        <button id={`btn-video-pifano-${marcha.num}`} onclick={`cambiarModoPifano('${marcha.num}', 'video')`} class="px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm">Video</button>
+                        <button id={`btn-midi-pifano-${marcha.num}`} onclick={`cambiarModoPifano('${marcha.num}', 'midi')`} class="px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded">MIDI</button>
+                      </div>
+                    </div>
+
+                    <div id={`youtube-pifano-${marcha.num}`} class="w-full aspect-video bg-black flex justify-center items-center transition-all duration-300">
+                      {marcha.videoPifano ? (
+                        <iframe src={`https://www.youtube.com/embed/${marcha.videoPifano}`} class="w-full h-full border-0" allowfullscreen></iframe>
+                      ) : (
+                        <p class="text-slate-500 text-sm">Video de pífano no disponible</p>
+                      )}
+                    </div>
+
+                    <div id={`midi-pifano-${marcha.num}`} class="hidden w-full transition-all duration-300 bg-slate-950">
+                      <div class="w-full flex justify-center items-center py-10 min-h-[320px] border-b border-slate-800 bg-slate-900/40 relative">
+                        <p class="absolute top-6 sm:top-8 text-slate-500 text-xs sm:text-sm uppercase tracking-widest font-bold">Digitación Pífano</p>
+                        <img id={`img-digitacion-${marcha.num}`} src="/img/digitacion/pifano/silencio.png" class="h-1/2 sm:h-2/3 object-contain opacity-40 transition-opacity drop-shadow-2xl" />
+                      </div>
                       
-                      {/* 1. ZONA DE IMÁGENES (SOLO PÍFANO) */}
-                      <div class="contenedor-digitacion bg-slate-900 p-6 flex flex-col items-center justify-center border-b border-slate-700">
-                        <p class="text-slate-500 text-xs uppercase tracking-widest mb-4 font-bold">Digitación del Pífano</p>
-                        <div class="w-full h-100 flex items-center justify-center p-2">
-                          <img 
-                            id={`img-digitacion-${marcha.num}`}
-                            src="/img/digitacion/pifano/silencio.png" 
-                            alt="Digitación Pífano"
-                            class="max-w-full max-h-full object-contain transition-opacity duration-100 opacity-40"
-                          />
-                        </div>
-                      </div>
-
-                      {/* 2. ZONA DEL REPRODUCTOR Y BOTONES (PÍFANO Y CAJA) */}
-                      <div class="seccion-midi">
-                        <midi-player 
-                          id={`player-${marcha.num}`} 
-                          data-pifano={marcha.midiPifano}
-                          data-corneta={marcha.midiCorneta}
-                          data-caja={marcha.midiCaja}
-                          src={marcha.midiPifano} 
-                          sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-                          style="visibility: hidden; height: 0; width: 0; position: absolute;"
-                        ></midi-player>
-
-                        <div class="p-5 flex items-center justify-between bg-slate-950">
-                          <div class="flex bg-slate-800 rounded-lg p-1 controles-velocidad">
-                            <button class="btn-vel px-3 py-1 text-xs font-bold text-slate-400" data-vel="0.5">50%</button>
-                            <button class="btn-vel px-3 py-1 text-xs font-bold text-slate-400" data-vel="0.75">75%</button>
-                            <button class="btn-vel px-3 py-1 text-xs font-bold bg-slate-700 text-yellow-400 activo" data-vel="1">100%</button>
+                      {marcha.midiPifano ? (
+                        <div>
+                          <midi-player id={`player-pifano-${marcha.num}`} src={marcha.midiPifano} sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus" style="visibility: hidden; height: 0; width: 0; position: absolute;"></midi-player>
+                          <div class="p-4 sm:p-6 flex items-center justify-between bg-slate-900 border-t border-slate-800">
+                            <div class="flex bg-slate-800 rounded-lg p-1">
+                              <button class="btn-vel px-3 py-1 text-xs font-bold text-slate-400" data-vel="0.5">50%</button>
+                              <button class="btn-vel px-3 py-1 text-xs font-bold text-slate-400" data-vel="0.75">75%</button>
+                              <button class="btn-vel px-3 py-1 text-xs font-bold bg-slate-700 text-yellow-400 activo" data-vel="1">100%</button>
+                            </div>
+                            <button class="btn-play w-14 h-14 sm:w-16 sm:h-16 bg-yellow-600 rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(202,138,4,0.3)] hover:scale-105 transition-transform" data-target={`player-pifano-${marcha.num}`}>
+                              <svg width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
+                            </button>
                           </div>
-                          
-                          <button class="btn-play w-14 h-14 bg-yellow-600 rounded-full flex items-center justify-center" data-target={`player-${marcha.num}`}>
-                            <svg class="icon-play" width="24" height="24" fill="currentColor"><path d="M8 5v14l11-7z"></path></svg>
-                            <svg class="icon-pause hidden" width="24" height="24" fill="currentColor"><path d="M6 4h4v16H6zM14 4h4v16h-4z"></path></svg>
-                          </button>
                         </div>
-                      </div>
+                      ) : (
+                        <p class="text-slate-500 text-sm p-6 text-center">MIDI no disponible</p>
+                      )}
+                    </div>
+                  </div>
 
-                      {/* 3. ZONA DE VIDEO YOUTUBE (SOLO CORNETA) */}
-                      <div class="seccion-video-corneta hidden w-full">
-                        <div class="bg-slate-900 rounded-lg overflow-hidden border border-slate-700/50 aspect-video relative flex justify-center items-center">
-                          {marcha.videoCorneta ? (
-                            <iframe src={`https://www.youtube.com/embed/${marcha.videoCorneta}`} class="absolute top-0 left-0 w-full h-full" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                          ) : (
-                            <p class="text-slate-500 text-sm flex items-center gap-2">
-                              <svg width="20" height="20" viewBox="0 0 24 24" fill="#64748b"><path d="M8 5.14v14l11-7-11-7z"></path></svg>
-                              Video no disponible
-                            </p>
-                          )}
+                  {/* ======================= CORNETA ======================= */}
+                  <div class="seccion-inst seccion-corneta hidden w-full">
+                    
+                    <div class="p-6 pb-4 text-center">
+                      <h4 class="text-yellow-500 font-bold mb-4 tracking-widest uppercase text-sm">Corneta</h4>
+                      <div class="inline-flex bg-slate-950 rounded-lg p-1 border border-slate-800 shadow-inner">
+                        <button id={`btn-video-corneta-${marcha.num}`} onclick={`cambiarModoCorneta('${marcha.num}', 'video')`} class="px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm">Video</button>
+                        <button id={`btn-midi-corneta-${marcha.num}`} onclick={`cambiarModoCorneta('${marcha.num}', 'midi')`} class="px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded">MIDI</button>
+                      </div>
+                    </div>
+
+                    <div id={`youtube-corneta-${marcha.num}`} class="w-full aspect-video bg-black flex justify-center items-center transition-all duration-300">
+                      {marcha.videoCorneta ? (
+                        <iframe src={`https://www.youtube.com/embed/${marcha.videoCorneta}`} class="w-full h-full border-0" allowfullscreen></iframe>
+                      ) : (
+                        <p class="text-slate-500 text-sm">Video de corneta no disponible</p>
+                      )}
+                    </div>
+
+                    <div id={`midi-corneta-${marcha.num}`} class="hidden w-full transition-all duration-300 bg-slate-900 border-t border-slate-800 p-6">
+                      {marcha.midiCorneta ? (
+                        <div class="max-w-2xl mx-auto flex flex-col items-center">
+                          {/* Visualizador puro de html-midi-player CON VARIABLES CSS */}
+                          <midi-visualizer
+  type="piano-roll"
+  id={`vis-corneta-${marcha.num}`}
+  src={marcha.midiCorneta}
+  style="width: 100%; height: 250px; background-color: white; border-radius: 8px; margin-bottom: 16px;"
+></midi-visualizer>
+
+                          {/* Reproductor nativo */}
+                          <midi-player
+                            src={marcha.midiCorneta}
+                            sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
+                            visualizer={`#vis-corneta-${marcha.num}`}
+                            style="width: 100%;"
+                          ></midi-player>
                         </div>
-                      </div>
-
+                      ) : (
+                        <p class="text-slate-500 text-sm text-center">MIDI no disponible</p>
+                      )}
                     </div>
-                  ) : (
-                    <div class="h-32 flex flex-col items-center justify-center gap-2">
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2"><path d="M12 2v20"></path><path d="m15 22-6-15"></path><path d="m9 22 6-15"></path><circle cx="12" cy="22" r="2"></circle></svg>
-                      <p class="text-slate-500 text-sm font-mono tracking-wide">Audio MIDI en preparación...</p>
-                    </div>
-                  )}
+                  </div>
 
-                </div>
+                  {/* ======================= CAJA ======================= */}
+                  <div class="seccion-inst seccion-caja hidden w-full">
+                    <div class="p-6 pb-4 text-center">
+                      <h4 class="text-yellow-500 font-bold tracking-widest uppercase text-sm">Caja</h4>
+                    </div>
+                    <div class="w-full aspect-video bg-black flex justify-center items-center">
+                      {marcha.videoCaja ? (
+                        <iframe src={`https://www.youtube.com/embed/${marcha.videoCaja}`} class="w-full h-full border-0" allowfullscreen></iframe>
+                      ) : (
+                        <p class="text-slate-500 text-sm">Video de caja no disponible</p>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* ======================= LIRA ======================= */}
+                  <div class="seccion-inst seccion-lira hidden w-full">
+                    <div class="p-6 pb-4 text-center">
+                      <h4 class="text-yellow-500 font-bold tracking-widest uppercase text-sm">Lira</h4>
+                    </div>
+                    <div class="w-full aspect-video bg-black flex justify-center items-center">
+                      {marcha.videoLira ? (
+                        <iframe src={`https://www.youtube.com/embed/${marcha.videoLira}`} class="w-full h-full border-0" allowfullscreen></iframe>
+                      ) : (
+                        <p class="text-slate-500 text-sm">Video de lira no disponible</p>
+                      )}
+                    </div>
+                  </div>
+
               </div>
-			</div>
-		  ))}
+            </div>
+          ))}
         </div>
 
       </main>
@@ -270,7 +420,6 @@ const marchas = [
         </p>
       </div>
 
-      {/* ESTE ES EL CONTENEDOR CLAVE DONDE FIREBASE INYECTARÁ LA TABLA */}
       <div id="tabla-ranking-contenedor" class="w-full max-w-lg mx-auto">
         <div class="flex justify-center items-center py-10">
           <span class="text-yellow-600 font-bold uppercase tracking-widest text-sm animate-pulse">
@@ -278,7 +427,7 @@ const marchas = [
           </span>
         </div>
       </div>
-      {/* EXPLICACIÓN DEL RANKING CON PREMIO */}
+      
       <div class="mt-8 bg-slate-800/30 border border-slate-700/50 rounded-lg p-5 text-center max-w-md mx-auto shadow-sm">
         <h3 class="text-yellow-500 font-bold text-xs tracking-widest uppercase mb-2">
           Mecánica del Ranking
@@ -309,7 +458,23 @@ const marchas = [
     </footer>
 
 <script>
-  // === IMPORTACIONES DE FIREBASE (NUBE) ===
+  // === PRECARGA DE IMÁGENES (PÍFANO) ===
+  const imagenesPifano = [
+    "/img/digitacion/pifano/silencio.png",
+    "/img/digitacion/pifano/d5.png",
+    "/img/digitacion/pifano/e5.png",
+    "/img/digitacion/pifano/fs5.png",
+    "/img/digitacion/pifano/g5.png",
+    "/img/digitacion/pifano/a5.png",
+    "/img/digitacion/pifano/b5.png",
+    "/img/digitacion/pifano/cs6.png",
+    "/img/digitacion/pifano/d6.png"
+  ];
+  imagenesPifano.forEach(ruta => {
+    const img = new Image();
+    img.src = ruta;
+  });
+
   import { initializeApp } from "firebase/app";
   import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, query, orderBy } from "firebase/firestore";
 
@@ -325,8 +490,6 @@ const marchas = [
 
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
-
-  // === SECCIONES INTACTAS (1 A 4) ===
 
   // 1. NAVEGACIÓN Y ACORDEONES
   document.querySelectorAll('.nav-btn').forEach(btn => {
@@ -355,7 +518,7 @@ const marchas = [
     });
   });
 
-  // 2. REPRODUCTOR Y VELOCIDAD
+  // 2. REPRODUCTOR Y VELOCIDAD (PÍFANO)
   document.querySelectorAll('.btn-play').forEach(btn => {
     btn.addEventListener('click', async function() {
       const player = document.getElementById(this.getAttribute('data-target'));
@@ -384,7 +547,9 @@ const marchas = [
       this.classList.add('text-yellow-400', 'border-yellow-400', 'font-bold');
 
       const multi = parseFloat(this.getAttribute('data-vel'));
-      const player = this.closest('.acordeon-contenido').querySelector('midi-player');
+      const botonPlay = this.closest('.seccion-inst').querySelector('.btn-play');
+      const targetId = botonPlay.getAttribute('data-target');
+      const player = document.getElementById(targetId);
       
       if (!player.dataset.originalNs) player.dataset.originalNs = JSON.stringify(player.noteSequence);
       const copia = JSON.parse(player.dataset.originalNs);
@@ -400,13 +565,13 @@ const marchas = [
     });
   });
 
-  // 3. DIGITACIÓN VISUAL (MEMORIA PERSISTENTE)
+  // 3. DIGITACIÓN VISUAL PÍFANO
   const mapa = { 74: "d5", 76: "e5", 78: "fs5", 79: "g5", 81: "a5", 83: "b5", 85: "cs6", 86: "d6" };
   let estadoActual = {};
 
   setInterval(() => {
-    document.querySelectorAll('midi-player').forEach(player => {
-      const idMarcha = player.id.split('-')[1];
+    document.querySelectorAll('midi-player[id^="player-pifano-"]').forEach(player => {
+      const idMarcha = player.id.replace('player-pifano-', '');
       const img = document.getElementById(`img-digitacion-${idMarcha}`);
       if (!img) return;
 
@@ -419,7 +584,7 @@ const marchas = [
         return;
       }
 
-      const nota = player.noteSequence.notes.find(n => 
+      const nota = player.noteSequence?.notes.find(n => 
         player.currentTime >= n.startTime && player.currentTime <= n.endTime
       );
       
@@ -431,7 +596,7 @@ const marchas = [
     });
   }, 50); 
 
-  // 4. CAMBIO DE INSTRUMENTO (Pífano, Corneta, Caja)
+  // 4. CAMBIO DE INSTRUMENTO
   document.querySelectorAll('[id^="tab-"]').forEach(tab => {
     tab.addEventListener('click', (e) => {
       const instrumento = e.currentTarget.id.replace('tab-', '');
@@ -446,29 +611,22 @@ const marchas = [
       const titulos = {
         'pifano': { nombre: 'Pífano', desc: 'Flauta de pico de cuerpo cilíndrico' },
         'corneta': { nombre: 'Corneta', desc: 'Instrumento de viento metal' },
-        'caja': { nombre: 'Caja', desc: 'Instrumento de percusión' }
+        'caja': { nombre: 'Caja', desc: 'Instrumento de percusión' },
+        'lira': { nombre: 'Lira', desc: 'Instrumento de percusión melódica' }
       };
+      
       document.getElementById('titulo-instrumento-actual').innerText = titulos[instrumento].nombre;
       document.getElementById('desc-instrumento-actual').innerText = titulos[instrumento].desc;
 
-      document.querySelectorAll('.contenedor-digitacion').forEach(div => {
-        if (instrumento === 'pifano') {
-          div.classList.remove('hidden');
-        } else {
-          div.classList.add('hidden');
-        }
-      });
-
       document.querySelectorAll('.acordeon-contenido').forEach(contenido => {
-        const seccionMidi = contenido.querySelector('.seccion-midi');
-        const seccionVideo = contenido.querySelector('.seccion-video-corneta');
-        
-        if (instrumento === 'corneta') {
-          if (seccionMidi) seccionMidi.classList.add('hidden');
-          if (seccionVideo) seccionVideo.classList.remove('hidden');
-        } else {
-          if (seccionMidi) seccionMidi.classList.remove('hidden');
-          if (seccionVideo) seccionVideo.classList.add('hidden');
+        contenido.querySelectorAll('.seccion-inst').forEach(sec => {
+          sec.classList.remove('block');
+          sec.classList.add('hidden');
+        });
+        const activa = contenido.querySelector(`.seccion-${instrumento}`);
+        if(activa) {
+          activa.classList.remove('hidden');
+          activa.classList.add('block');
         }
       });
 
@@ -476,21 +634,11 @@ const marchas = [
 
       document.querySelectorAll('midi-player').forEach(player => {
         if (player.playing) player.stop();
-        
-        if (instrumento !== 'corneta') {
-          const nuevaRuta = player.getAttribute(`data-${instrumento}`);
-          if (nuevaRuta && nuevaRuta !== "null") {
-            player.src = nuevaRuta;
-            delete player.dataset.originalNs; 
-          }
-        }
       });
     });
   });
 
-  // === SECCIÓN 7 y 8: LÓGICA DE FIREBASE Y RANKING REAL ===
-  
-  // 7. SISTEMA DE LOGIN Y CHECK-IN EN LA NUBE
+  // 7. SISTEMA DE LOGIN Y CHECK-IN
   const alumnosPorCurso = {
     "4° Básico": [
       "Juanito Pérez", "José Pepito", "Nicolaso Gómez", "Cristóbal Pino", "Elena Barrera", "Isidora Martinez", "Julián Ávila", 
@@ -543,7 +691,6 @@ const marchas = [
   const btnGuardarLogin = document.getElementById('btn-guardar-login');
   const selectNombre = document.getElementById('select-nombre');
 
-  // Llenar el selector
   for (const curso in alumnosPorCurso) {
     const grupo = document.createElement('optgroup');
     grupo.label = curso; 
@@ -557,14 +704,12 @@ const marchas = [
     selectNombre.appendChild(grupo);
   }
 
-// Función para actualizar el botón de arriba
   function actualizarUI() {
     const nombre = localStorage.getItem('alumnoBanda');
     if (nombre) {
       btnLogin.innerHTML = `<span class="uppercase tracking-widest text-xs font-bold text-yellow-500">${nombre}</span>`;
       btnLogin.className = "mt-4 sm:mt-0 px-4 py-2 bg-slate-900 border border-slate-700 hover:border-yellow-600/50 rounded transition-colors flex items-center cursor-pointer shadow-sm";
     } else {
-      // AQUÍ ESTÁ EL CAMBIO DE TEXTO
       btnLogin.innerHTML = 'REGISTRA TU PRÁCTICA';
       btnLogin.className = "mt-4 sm:mt-0 px-5 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold uppercase tracking-wider text-xs rounded transition-colors cursor-pointer";
     }
@@ -588,7 +733,6 @@ const marchas = [
     selectNombre.value = ''; 
   });
 
-  // Guardar en la NUBE (Firebase) con restricción de tiempo
   btnGuardarLogin.addEventListener('click', async () => {
     const nombre = selectNombre.value;
     
@@ -609,27 +753,25 @@ const marchas = [
           ultimaFecha: "", 
           iniciosHoy: 0, 
           nombre: nombre, 
-          ultimoCheckIn: 0 // Nueva variable para controlar los 20 min
+          ultimoCheckIn: 0 
         };
 
         if (docSnap.exists()) {
           perfil = docSnap.data();
         }
 
-        // Reiniciar si es día nuevo
         if (perfil.ultimaFecha !== hoy) {
           perfil.ultimaFecha = hoy;
           perfil.iniciosHoy = 0;
         }
 
-        // Lógica de 20 minutos
-        const tiempoTranscurrido = (ahora.getTime() - perfil.ultimoCheckIn) / 1000 / 60; // en minutos
+        const tiempoTranscurrido = (ahora.getTime() - perfil.ultimoCheckIn) / 1000 / 60; 
 
         if (perfil.iniciosHoy < 3) {
           if (perfil.ultimoCheckIn === 0 || tiempoTranscurrido >= 20) {
             perfil.iniciosHoy++;
             perfil.puntos += 15;
-            perfil.ultimoCheckIn = ahora.getTime(); // Guardamos el tiempo actual
+            perfil.ultimoCheckIn = ahora.getTime(); 
             
             await setDoc(alumnoRef, perfil);
             alert(`¡Check-in exitoso, ${nombre}!\n\nLlevas ${perfil.iniciosHoy}/3 sesiones hoy.\nHas sumado 15 puntos.\n\n(Recuerda: tu próxima sesión puntuable será en 20 minutos).`);
@@ -679,29 +821,26 @@ const marchas = [
       let index = 0;
       
       querySnapshot.forEach((doc) => {
-        // Dentro del bucle querySnapshot.forEach((doc) => { ...
-const alumno = doc.data();
+        const alumno = doc.data();
+        const esTop = index < 3;
+        const fondoFila = esTop ? "bg-slate-800/50 border-yellow-500/20" : "border-b border-slate-800/60";
+        const brilloTexto = esTop ? "text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] font-bold" : "text-slate-200";
 
-// Estilos para el podio (Top 3)
-const esTop = index < 3;
-const fondoFila = esTop ? "bg-slate-800/50 border-yellow-500/20" : "border-b border-slate-800/60";
-const brilloTexto = esTop ? "text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-yellow-600 drop-shadow-[0_0_8px_rgba(234,179,8,0.5)] font-bold" : "text-slate-200";
+        let posicion = "";
+        if (index === 0) posicion = "🥇";
+        else if (index === 1) posicion = "🥈";
+        else if (index === 2) posicion = "🥉";
+        else posicion = `<span class="text-slate-600 font-mono text-xs w-5 inline-block">${index + 1}.</span>`;
 
-let posicion = "";
-if (index === 0) posicion = "🥇";
-else if (index === 1) posicion = "🥈";
-else if (index === 2) posicion = "🥉";
-else posicion = `<span class="text-slate-600 font-mono text-xs w-5 inline-block">${index + 1}.</span>`;
-
-html += `
-  <div class="flex justify-between items-center p-4 ${fondoFila} transition-all duration-300">
-    <div class="flex items-center gap-3">
-      <div class="w-6 text-center">${posicion}</div>
-      <span class="text-sm ${brilloTexto}">${alumno.nombre}</span>
-    </div>
-    <span class="text-sm font-black text-yellow-500 font-mono drop-shadow-[0_0_5px_rgba(234,179,8,0.3)]">${alumno.puntos} PTS</span>
-  </div>
-`;
+        html += `
+          <div class="flex justify-between items-center p-4 ${fondoFila} transition-all duration-300">
+            <div class="flex items-center gap-3">
+              <div class="w-6 text-center">${posicion}</div>
+              <span class="text-sm ${brilloTexto}">${alumno.nombre}</span>
+            </div>
+            <span class="text-sm font-black text-yellow-500 font-mono drop-shadow-[0_0_5px_rgba(234,179,8,0.3)]">${alumno.puntos} PTS</span>
+          </div>
+        `;
         index++;
       });
 
@@ -709,6 +848,7 @@ html += `
       contenedorRanking.innerHTML = html;
     });
   }
+
   const capaBloqueo = document.getElementById('login-password');
   const inputPass = document.getElementById('input-password');
   const btnAcceder = document.getElementById('btn-acceder');
@@ -724,11 +864,70 @@ html += `
     }
   });
 
-  // Verificar si ya ingresó antes
   if (localStorage.getItem('accesoConcedido') === 'true') {
     capaBloqueo.classList.add('hidden');
   }
-</script>
 
+  // Alternar entre Video y MIDI
+  window.cambiarModoPifano = function(numMarcha, modo) {
+    const contVideo = document.getElementById(`youtube-pifano-${numMarcha}`);
+    const contMidi = document.getElementById(`midi-pifano-${numMarcha}`);
+    const btnVideo = document.getElementById(`btn-video-pifano-${numMarcha}`);
+    const btnMidi = document.getElementById(`btn-midi-pifano-${numMarcha}`);
+
+    if (!contVideo || !contMidi) return;
+
+    if (modo === 'video') {
+      contVideo.classList.remove('hidden');
+      contMidi.classList.add('hidden');
+      
+      btnVideo.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
+      btnMidi.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
+    } else {
+      contMidi.classList.remove('hidden');
+      contVideo.classList.add('hidden');
+      
+      btnMidi.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
+      btnVideo.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
+    }
+  };
+
+window.cambiarModoCorneta = function(numMarcha, modo) {
+  const contVideo = document.getElementById(`youtube-corneta-${numMarcha}`);
+  const contMidi = document.getElementById(`midi-corneta-${numMarcha}`);
+  const btnVideo = document.getElementById(`btn-video-corneta-${numMarcha}`);
+  const btnMidi = document.getElementById(`btn-midi-corneta-${numMarcha}`);
+  
+  if (!contVideo || !contMidi) return;
+
+  if (modo === 'video') {
+    contVideo.classList.remove('hidden');
+    contMidi.classList.add('hidden');
+    btnVideo.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
+    btnMidi.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
+  } else {
+    contMidi.classList.remove('hidden');
+    contVideo.classList.add('hidden');
+    btnMidi.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
+    btnVideo.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
+
+    // FUERZA LOS COLORES AQUÍ
+    const visualizer = document.getElementById(`vis-corneta-${numMarcha}`);
+    if (visualizer) {
+      visualizer.style.setProperty('--midi-visualizer-note-color', '148, 163, 184');
+      visualizer.style.setProperty('--midi-visualizer-active-note-color', '234, 179, 8');
+      
+      // Aseguramos la conexión con el player
+      const player = document.getElementById(`player-corneta-${numMarcha}`);
+      if(player) {
+         player.visualizer = visualizer;
+      }
+      
+      // Forzar renderizado
+      if (visualizer.redraw) visualizer.redraw();
+    }
+  }
+};
+</script>
   </body>
 </html>
