@@ -109,6 +109,21 @@ const marchas = [
     videoLira: null,
     midiPifano: "/midi/pifano/marcha-9.mid", 
     midiCorneta: "/midi/corneta/marcha-9.mid" 
+  },
+  { 
+    num: "10", 
+    nombre: "Marcha Viejos Estandartes", 
+    orden: "Estudio a 3 voces (Liras) y Caja", 
+    videoId: "m2V1J1qhafI", 
+    videoPifano: null,
+    videoCorneta: null, 
+    videoCaja: null, // Puedes poner el ID de youtube para la caja aquí
+    videoLira: null,
+    videoLira1: "vr6p40plCe0", // Reemplaza con el ID de YouTube de la 1ra voz
+    videoLira2: "7UWrddeykQA", // Reemplaza con el ID de YouTube de la 2da voz
+    videoLira3: "ar0qwMv7lRs", // Reemplaza con el ID de YouTube de la 3ra voz
+    midiPifano: null, 
+    midiCorneta: null 
   }
 ];
 ---
@@ -141,7 +156,6 @@ const marchas = [
       </div>
     </div>
 
-<!-- POP-UP DE INSTRUCCIONES SEMANALES -->
     <div id="popup-instrucciones" class="fixed inset-0 z-[60] hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
       <div class="bg-slate-900 border border-yellow-600/50 rounded-xl shadow-[0_0_30px_rgba(202,138,4,0.15)] max-w-2xl w-full max-h-[85vh] flex flex-col">
         <div class="p-6 border-b border-slate-800 text-center relative shrink-0">
@@ -150,7 +164,6 @@ const marchas = [
         </div>
         <div class="p-6 overflow-y-auto space-y-6 text-sm text-slate-300">
           
-          <!-- PÍFANOS -->
           <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50 border-l-4 border-l-yellow-600">
             <h3 class="text-white font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
               <span class="text-yellow-500 text-lg">●</span> Pífanos
@@ -168,7 +181,6 @@ const marchas = [
             </ul>
           </div>
 
-          <!-- CORNETAS -->
           <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50 border-l-4 border-l-yellow-600">
             <h3 class="text-white font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
               <span class="text-yellow-500 text-lg">●</span> Cornetas
@@ -185,7 +197,6 @@ const marchas = [
             </ul>
           </div>
 
-          <!-- CAJAS -->
           <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50 border-l-4 border-l-yellow-600">
             <h3 class="text-white font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
               <span class="text-yellow-500 text-lg">●</span> Cajas
@@ -199,7 +210,6 @@ const marchas = [
             </p>
           </div>
 
-          <!-- LIRAS -->
           <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50 border-l-4 border-l-yellow-600">
             <h3 class="text-white font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
               <span class="text-yellow-500 text-lg">●</span> Liras
@@ -291,7 +301,7 @@ const marchas = [
       <main id="vista-repertorio" class="vista-activa max-w-4xl mx-auto p-6 mt-8 block">
         <div class="flex justify-between items-end mb-8 border-b border-slate-700 pb-4">
           <h2 class="text-3xl text-slate-100" style="font-family: 'Playfair Display', serif;">Todas las marchas</h2>
-          <p class="text-slate-400 text-sm">Banda completa · 11 marchas</p>
+          <p class="text-slate-400 text-sm">Banda completa · 10 marchas</p>
         </div>
 
         <div class="space-y-6">
@@ -358,17 +368,21 @@ const marchas = [
           </div>
         </div>
 
-        <p class="text-slate-500 text-xs uppercase tracking-widest mb-4">11 marchas disponibles · Toca para expandir</p>
+        <p class="text-slate-500 text-xs uppercase tracking-widest mb-4">10 marchas disponibles · Toca para expandir</p>
         
         <div class="space-y-3">
           {marchas.map((marcha) => (
-            <div class="acordeon-item bg-slate-800/50 border border-slate-700 rounded-lg overflow-hidden transition-all shadow-sm">
-              <button class="acordeon-btn w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/50 transition">
+            <div class="acordeon-item bg-slate-800/50 border border-slate-700 rounded-lg overflow-hidden transition-all shadow-sm" data-num={marcha.num}>
+              
+              <button class="acordeon-btn w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/50 transition relative">
                 <div class="flex items-center gap-4">
                   <span class="text-xl font-bold text-yellow-600/80">{marcha.num}</span>
                   <span class="titulo-marcha-acordeon font-semibold text-slate-200">{marcha.nombre}</span>
                 </div>
-                <svg class="acordeon-icono w-5 h-5 text-slate-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                <div class="flex items-center gap-3">
+                  <span class="mensaje-excluido hidden text-red-400 text-xs font-bold uppercase tracking-wider text-right">(Sin participación)</span>
+                  <svg class="acordeon-icono w-5 h-5 text-slate-500 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
               </button>
               
              <div class="acordeon-contenido hidden bg-slate-900 border-t border-slate-700">
@@ -438,24 +452,20 @@ const marchas = [
                     <div id={`midi-corneta-${marcha.num}`} class="hidden w-full transition-all duration-300 bg-slate-900 border-t border-slate-800 p-6">
                       {marcha.midiCorneta ? (
                         <div class="max-w-2xl mx-auto flex flex-col items-center">
-                          
-                          {/* 1. Visualizador PRIMERO para animación fluida y colores */}
                           <midi-visualizer 
                             type="piano-roll" 
                             id={`vis-corneta-${marcha.num}`} 
                             src={marcha.midiCorneta}
-                            config={`{"pixelsPerTimeStep": 80}`}
-                            style="--midi-visualizer-note-color: #3b82f6; --midi-visualizer-active-note-color: #eab308; display: block; width: 100%;">
+                            style="display: block; width: 100%; height: 250px; background-color: white; border-radius: 8px; margin-bottom: 16px;">
                           </midi-visualizer>
 
-                          {/* 2. Reproductor enlazado al visualizador */}
                           <midi-player
                             id={`player-corneta-${marcha.num}`}
                             src={marcha.midiCorneta}
                             sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-                            visualizer={`#vis-corneta-${marcha.num}`}>
+                            visualizer={`#vis-corneta-${marcha.num}`}
+                            style="width: 100%;">
                           </midi-player>
-
                         </div>
                       ) : (
                         <p class="text-slate-500 text-sm text-center">MIDI no disponible</p>
@@ -480,15 +490,38 @@ const marchas = [
                   {/* ======================= LIRA ======================= */}
                   <div class="seccion-inst seccion-lira hidden w-full">
                     <div class="p-6 pb-4 text-center">
-                      <h4 class="text-yellow-500 font-bold tracking-widest uppercase text-sm">Lira</h4>
+                      <h4 class="text-yellow-500 font-bold mb-4 tracking-widest uppercase text-sm">Lira</h4>
+                      
+                      {marcha.num === "10" ? (
+                        <div class="inline-flex bg-slate-950 rounded-lg p-1 border border-slate-800 shadow-inner">
+                          <button id={`btn-lira1-${marcha.num}`} onclick={`cambiarModoLira('${marcha.num}', '1')`} class="px-4 sm:px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm">Lira 1</button>
+                          <button id={`btn-lira2-${marcha.num}`} onclick={`cambiarModoLira('${marcha.num}', '2')`} class="px-4 sm:px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded">Lira 2</button>
+                          <button id={`btn-lira3-${marcha.num}`} onclick={`cambiarModoLira('${marcha.num}', '3')`} class="px-4 sm:px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded">Lira 3</button>
+                        </div>
+                      ) : null}
                     </div>
-                    <div class="w-full aspect-video bg-black flex justify-center items-center">
-                      {marcha.videoLira ? (
-                        <iframe src={`https://www.youtube.com/embed/${marcha.videoLira}`} class="w-full h-full border-0" allowfullscreen></iframe>
-                      ) : (
-                        <p class="text-slate-500 text-sm">Video de lira no disponible</p>
-                      )}
-                    </div>
+
+                    {marcha.num === "10" ? (
+                      <div>
+                        <div id={`youtube-lira1-${marcha.num}`} class="w-full aspect-video bg-black flex justify-center items-center transition-all duration-300 block">
+                          {marcha.videoLira1 ? <iframe src={`https://www.youtube.com/embed/${marcha.videoLira1}`} class="w-full h-full border-0" allowfullscreen></iframe> : <p class="text-slate-500 text-sm">Video de Lira 1 no disponible</p>}
+                        </div>
+                        <div id={`youtube-lira2-${marcha.num}`} class="w-full aspect-video bg-black flex justify-center items-center transition-all duration-300 hidden">
+                          {marcha.videoLira2 ? <iframe src={`https://www.youtube.com/embed/${marcha.videoLira2}`} class="w-full h-full border-0" allowfullscreen></iframe> : <p class="text-slate-500 text-sm">Video de Lira 2 no disponible</p>}
+                        </div>
+                        <div id={`youtube-lira3-${marcha.num}`} class="w-full aspect-video bg-black flex justify-center items-center transition-all duration-300 hidden">
+                          {marcha.videoLira3 ? <iframe src={`https://www.youtube.com/embed/${marcha.videoLira3}`} class="w-full h-full border-0" allowfullscreen></iframe> : <p class="text-slate-500 text-sm">Video de Lira 3 no disponible</p>}
+                        </div>
+                      </div>
+                    ) : (
+                      <div class="w-full aspect-video bg-black flex justify-center items-center">
+                        {marcha.videoLira ? (
+                          <iframe src={`https://www.youtube.com/embed/${marcha.videoLira}`} class="w-full h-full border-0" allowfullscreen></iframe>
+                        ) : (
+                          <p class="text-slate-500 text-sm">Video de lira no disponible</p>
+                        )}
+                      </div>
+                    )}
                   </div>
 
               </div>
@@ -576,7 +609,6 @@ const marchas = [
     </footer>
 
 <script>
-  // === PRECARGA DE IMÁGENES (PÍFANO) ===
   const imagenesPifano = [
     "/img/digitacion/pifano/silencio.png",
     "/img/digitacion/pifano/d5.png",
@@ -609,7 +641,6 @@ const marchas = [
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // === NAVEGACIÓN Y ACORDEONES ===
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const vista = e.target.id.replace('btn-', 'vista-');
@@ -626,8 +657,11 @@ const marchas = [
   });
 
   document.querySelectorAll('.acordeon-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const contenido = btn.nextElementSibling;
+    btn.addEventListener('click', (e) => {
+      const item = e.currentTarget.closest('.acordeon-item');
+      if (item && item.classList.contains('deshabilitado')) return;
+
+      const contenido = e.currentTarget.nextElementSibling;
       const estabaOculto = contenido.classList.contains('hidden');
       document.querySelectorAll('.acordeon-contenido').forEach(c => c.classList.add('hidden'));
       if (estabaOculto) {
@@ -636,7 +670,6 @@ const marchas = [
     });
   });
 
-  // === REPRODUCTOR Y VELOCIDAD (PÍFANO) ===
   document.querySelectorAll('.btn-play').forEach(btn => {
     btn.addEventListener('click', async function() {
       const player = document.getElementById(this.getAttribute('data-target'));
@@ -683,7 +716,6 @@ const marchas = [
     });
   });
 
-  // === DIGITACIÓN VISUAL PÍFANO ===
   const mapa = { 74: "d5", 76: "e5", 78: "fs5", 79: "g5", 81: "a5", 83: "b5", 85: "cs6", 86: "d6" };
   let estadoActual = {};
 
@@ -714,7 +746,6 @@ const marchas = [
     });
   }, 50); 
 
-  // === CAMBIO DE INSTRUMENTO ===
   document.querySelectorAll('[id^="tab-"]').forEach(tab => {
     tab.addEventListener('click', (e) => {
       const instrumento = e.currentTarget.id.replace('tab-', '');
@@ -748,6 +779,37 @@ const marchas = [
         }
       });
 
+      // LÓGICA DE EXCLUSIÓN ACTUALIZADA PARA MARCHA 10
+      const excluidos = {
+        'pifano': ['02', '10'],
+        'corneta': ['02', '07', '08', '10'],
+        'caja': [],
+        'lira': ['02']
+      };
+
+      document.querySelectorAll('.acordeon-item[data-num]').forEach(item => {
+        const num = item.getAttribute('data-num');
+        const btn = item.querySelector('.acordeon-btn');
+        const mensaje = item.querySelector('.mensaje-excluido');
+        const icono = item.querySelector('.acordeon-icono');
+
+        if (excluidos[instrumento].includes(num)) {
+          item.classList.add('deshabilitado', 'opacity-50');
+          btn.classList.remove('hover:bg-slate-700/50');
+          btn.classList.add('cursor-not-allowed');
+          if(mensaje) mensaje.classList.remove('hidden');
+          if(icono) icono.classList.add('hidden');
+          const cont = item.querySelector('.acordeon-contenido');
+          if(cont) cont.classList.add('hidden');
+        } else {
+          item.classList.remove('deshabilitado', 'opacity-50');
+          btn.classList.add('hover:bg-slate-700/50');
+          btn.classList.remove('cursor-not-allowed');
+          if(mensaje) mensaje.classList.add('hidden');
+          if(icono) icono.classList.remove('hidden');
+        }
+      });
+
       document.querySelectorAll('.acordeon-contenido').forEach(c => c.classList.add('hidden'));
 
       document.querySelectorAll('midi-player').forEach(player => {
@@ -756,7 +818,10 @@ const marchas = [
     });
   });
 
-  // === LÓGICA DE LOGIN (CONTRASEÑA Y POP-UP) ===
+  // === INICIALIZAR BLOQUEOS POR DEFECTO (PÍFANO) ===
+  const tabPifanoInicial = document.getElementById('tab-pifano');
+  if (tabPifanoInicial) tabPifanoInicial.click();
+
   const capaBloqueo = document.getElementById('login-password');
   const inputPass = document.getElementById('input-password');
   const btnAcceder = document.getElementById('btn-acceder');
@@ -788,11 +853,10 @@ const marchas = [
   });
 
   if (localStorage.getItem('accesoConcedido') === 'true') {
-    capaBloqueo.classList.add('hidden');
+    if(capaBloqueo) capaBloqueo.classList.add('hidden');
     mostrarInstrucciones();
   }
 
-  // === SISTEMA DE CHECK-IN Y CRONÓMETRO ===
   const alumnosPorCurso = {
     "4° Básico": ["Juanito Pérez", "José Pepito", "Nicolaso Gómez", "Cristóbal Pino", "Elena Barrera", "Isidora Martinez", "Julián Ávila", "Marcelo Farías", "Noelia Pérez", "Omar Yáñez", "Pablo Lizana", "Rocío Pino", "Theo Valdés", "Yeremi Olivares"],
     "5° Básico": ["Agustina Palomino", "Alexia Cáceres", "Florencia Pino", "Isabella Gallegos", "León Arriagada", "Paolo Millacaris", "Patricio Pérez"],
@@ -862,7 +926,6 @@ const marchas = [
     actualizarDisplayTiempo();
 
     cronometroInterval = setInterval(async () => {
-      // Calculamos cuánto lleva hoy sumando lo de la base de datos + la sesión actual
       let puntosHoyDB = parseInt(sessionStorage.getItem('puntosHoyDB')) || 0;
 
       if (!document.hidden && (puntosHoyDB + puntosGanados) < 90) {
@@ -894,7 +957,6 @@ const marchas = [
                 perfil.puntosHoy = (perfil.puntosHoy || 0) + 1;
                 await setDoc(alumnoRef, perfil);
                 
-                // Actualizamos la variable local en base a lo guardado
                 sessionStorage.setItem('puntosHoyDB', perfil.puntosHoy - puntosGanados);
               }
             }
@@ -902,7 +964,6 @@ const marchas = [
         }
       }
       
-      // Detener visualmente si llega al tope diario
       let puntosActualizados = parseInt(sessionStorage.getItem('puntosHoyDB')) || 0;
       if ((puntosActualizados + puntosGanados) >= 90) {
           displayTiempo.innerText = "MÁX. DIARIO";
@@ -955,79 +1016,17 @@ const marchas = [
         const hoy = new Date().toDateString();
         let perfil = docSnap.exists() ? docSnap.data() : { puntos: 0, ultimaFecha: hoy, iniciosHoy: 0, puntosHoy: 0, nombre: nombre };
 
-        // Si es un nuevo día, reiniciamos su contador diario
         if (perfil.ultimaFecha !== hoy) {
           perfil.ultimaFecha = hoy;
           perfil.iniciosHoy = 0;
           perfil.puntosHoy = 0;
         }
 
-        perfil.iniciosHoy++; // Guardamos un registro estadístico de cuántas veces entra al día
-        await setDoc(alumnoRef, perfil);
-
-        sessionStorage.setItem('alumnoBanda', nombre); 
-        sessionStorage.setItem('puntosHoyDB', perfil.puntosHoy || 0); // Cargamos su progreso del día
-        
-        detenerCronometro(); 
-        loginBanner.classList.add('hidden'); 
-        selectNombre.value = '';
-        actualizarUI(); 
-        
-        // Mensaje dinámico dependiendo de si ya logró los 90 puntos antes de entrar
-        if ((perfil.puntosHoy || 0) >= 90) {
-          alert(`¡Hola, ${nombre}!\n\nYa acumulaste tus 90 puntos de hoy. Puedes seguir usando el material para ensayar, pero el cronómetro ya no sumará más puntos en el ranking hasta mañana.`);
-        } else {
-          alert(`¡Sesión iniciada, ${nombre}!\n\nEl cronómetro comenzará a correr ahora. Ganarás 1 punto por cada minuto (hasta un máximo de 90 al día).\nRecuerda que si abres otra pestaña o minimizas el navegador, el tiempo se pausará.`);
-        }
-
-      } catch (error) {
-        console.error("Error al iniciar sesión:", error);
-        alert("Error de conexión con la base de datos. Inténtalo de nuevo.");
-      } finally {
-        btnGuardarLogin.innerHTML = textoOriginal;
-        btnGuardarLogin.disabled = false;
-      }
-      
-    } else {
-      selectNombre.classList.add('ring-2', 'ring-red-500');
-      setTimeout(() => selectNombre.classList.remove('ring-2', 'ring-red-500'), 1500);
-    }
-  });
-
-  btnCerrarBanner.addEventListener('click', () => {
-    loginBanner.classList.add('hidden');
-    selectNombre.value = ''; 
-  });
-
-  btnGuardarLogin.addEventListener('click', async () => {
-    const nombre = selectNombre.value;
-    
-    if (nombre) {
-      const textoOriginal = btnGuardarLogin.innerHTML;
-      btnGuardarLogin.innerHTML = "CARGANDO...";
-      btnGuardarLogin.disabled = true;
-
-      try {
-        const alumnoRef = doc(db, "ranking", nombre);
-        const docSnap = await getDoc(alumnoRef);
-        
-        const hoy = new Date().toDateString();
-        let perfil = docSnap.exists() ? docSnap.data() : { puntos: 0, ultimaFecha: hoy, iniciosHoy: 0, puntosHoy: 0, nombre: nombre };
-
-        // Si es un nuevo día, reiniciamos su contador diario
-        if (perfil.ultimaFecha !== hoy) {
-          perfil.ultimaFecha = hoy;
-          perfil.iniciosHoy = 0;
-          perfil.puntosHoy = 0;
-        }
-
-        // ELIMINAMOS EL BLOQUEO AQUÍ.
-        // Ahora solo sumamos +1 a las veces que ha entrado, pero no lo bloqueamos.
         perfil.iniciosHoy++; 
         await setDoc(alumnoRef, perfil);
 
         sessionStorage.setItem('alumnoBanda', nombre); 
-        sessionStorage.setItem('puntosHoyDB', perfil.puntosHoy || 0); // Cargamos su progreso del día
+        sessionStorage.setItem('puntosHoyDB', perfil.puntosHoy || 0); 
         
         detenerCronometro(); 
         loginBanner.classList.add('hidden'); 
@@ -1048,7 +1047,6 @@ const marchas = [
     }
   });
 
-  // === ESCUCHADOR EN TIEMPO REAL PARA EL RANKING ===
   const contenedorRanking = document.getElementById('tabla-ranking-contenedor');
   
   if (contenedorRanking) {
@@ -1095,7 +1093,6 @@ const marchas = [
     });
   }
 
-  // === ALTERNAR ENTRE VIDEO Y MIDI ===
   window.cambiarModoPifano = function(numMarcha, modo) {
     const contVideo = document.getElementById(`youtube-pifano-${numMarcha}`);
     const contMidi = document.getElementById(`midi-pifano-${numMarcha}`);
@@ -1135,11 +1132,47 @@ const marchas = [
       contVideo.classList.add('hidden');
       btnMidi.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
       btnVideo.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
+
+      const visualizer = document.getElementById(`vis-corneta-${numMarcha}`);
+      if (visualizer) {
+        visualizer.style.setProperty('--midi-visualizer-note-color', '148, 163, 184');
+        visualizer.style.setProperty('--midi-visualizer-active-note-color', '234, 179, 8');
+        const player = document.getElementById(`player-corneta-${numMarcha}`);
+        if(player) player.visualizer = visualizer;
+        if (visualizer.redraw) visualizer.redraw();
+      }
     }
   };
 
-  // === LÓGICA DEL PANEL ADMIN PROFESOR ===
-  const PASS_ADMIN = "admin2123.huique"; // <-- CAMBIA TU CONTRASEÑA AQUÍ
+  window.cambiarModoLira = function(numMarcha, modo) {
+    const cont1 = document.getElementById(`youtube-lira1-${numMarcha}`);
+    const cont2 = document.getElementById(`youtube-lira2-${numMarcha}`);
+    const cont3 = document.getElementById(`youtube-lira3-${numMarcha}`);
+    
+    const btn1 = document.getElementById(`btn-lira1-${numMarcha}`);
+    const btn2 = document.getElementById(`btn-lira2-${numMarcha}`);
+    const btn3 = document.getElementById(`btn-lira3-${numMarcha}`);
+
+    if (!cont1 || !cont2 || !cont3) return;
+
+    [cont1, cont2, cont3].forEach(c => { c.classList.remove('block'); c.classList.add('hidden'); });
+    [btn1, btn2, btn3].forEach(b => { 
+      b.className = "px-4 sm:px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded"; 
+    });
+
+    if (modo === '1') {
+      cont1.classList.remove('hidden'); cont1.classList.add('block');
+      btn1.className = "px-4 sm:px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
+    } else if (modo === '2') {
+      cont2.classList.remove('hidden'); cont2.classList.add('block');
+      btn2.className = "px-4 sm:px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
+    } else if (modo === '3') {
+      cont3.classList.remove('hidden'); cont3.classList.add('block');
+      btn3.className = "px-4 sm:px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
+    }
+  };
+
+  const PASS_ADMIN = "admin2123.huique"; 
 
   const modalAdmin = document.getElementById('modal-admin');
   const btnAbrirAdmin = document.getElementById('btn-abrir-admin');
