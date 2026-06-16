@@ -123,7 +123,6 @@ const marchas = [
     <meta property="og:image" content="https://bandahuique.cl/img/portada-social.png" />
     <meta property="og:url" content="https://bandahuique.cl" />
     <meta property="og:type" content="website" />
-
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://bandahuique.cl/img/portada-social.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -133,11 +132,81 @@ const marchas = [
   </head>
 
   <body class="bg-slate-900 text-slate-200 min-h-screen" style="font-family: 'Source Sans 3', sans-serif;">
-    <div id="login-password" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-xl">
+    
+    <div id="login-password" class="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-xl transition-all">
       <div class="bg-slate-900 border border-slate-700 p-8 rounded-xl text-center shadow-2xl">
         <h2 class="text-slate-200 font-bold mb-4">Acceso Restringido</h2>
         <input type="password" id="input-password" placeholder="Contraseña..." class="bg-slate-800 text-white px-4 py-2 rounded mb-4 w-full border border-slate-600 outline-none focus:border-yellow-600">
         <button id="btn-acceder" class="w-full bg-yellow-600 hover:bg-yellow-500 text-black font-bold py-2 rounded transition-all">INGRESAR</button>
+      </div>
+    </div>
+
+<!-- POP-UP DE INSTRUCCIONES SEMANALES -->
+    <div id="popup-instrucciones" class="fixed inset-0 z-[60] hidden items-center justify-center bg-slate-950/80 backdrop-blur-md p-4 transition-all">
+      <div class="bg-slate-900 border border-yellow-600/50 rounded-xl shadow-[0_0_30px_rgba(202,138,4,0.15)] max-w-2xl w-full max-h-[85vh] flex flex-col">
+        <div class="p-6 border-b border-slate-800 text-center relative shrink-0">
+          <h2 class="text-2xl text-yellow-500 font-bold tracking-widest uppercase" style="font-family: 'Playfair Display', serif;">Objetivos de Ensayo</h2>
+          <p class="text-slate-400 text-sm mt-1">Lee con atención lo que debes practicar esta semana</p>
+        </div>
+        <div class="p-6 overflow-y-auto space-y-6 text-sm text-slate-300">
+          
+          <!-- PÍFANOS -->
+          <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50 border-l-4 border-l-yellow-600">
+            <h3 class="text-white font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+              <span class="text-yellow-500 text-lg">●</span> Pífanos
+            </h3>
+            <p class="leading-relaxed mb-2">Ya que la mayoría se sabe la primera parte de la <strong>Marcha N°1</strong>, deben estudiar con mayor atención la segunda parte. Una vez que la sepan completa, pasen a estudiar la <strong>Marcha N°3</strong>, que es sencilla y de una sola parte (ojo, la Marcha N°2 no tiene pífano, así que se la saltan). Si alguno aprende la N°3 sin dificultad, puede avanzar a la <strong>Marcha N°5</strong>.</p>
+            <ul class="list-disc list-inside space-y-1 text-slate-400 ml-2">
+              <li>Estudien bajando la velocidad al video o al MIDI.</li>
+              <li>Traten de sacar un sonido fuerte y agudo, soplando cortito y haciendo con la boca/lengua la sílaba «tu», pero sin emitir sonido con las cuerdas vocales.</li>
+              <li>Si se marean rápidamente, es porque están botando demasiado aire y tocando notas muy largas. Paren de tocar un momento y tomen aire profunda y lentamente.</li>
+            </ul>
+          </div>
+
+          <!-- CORNETAS -->
+          <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50 border-l-4 border-l-yellow-600">
+            <h3 class="text-white font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+              <span class="text-yellow-500 text-lg">●</span> Cornetas
+            </h3>
+            <p class="leading-relaxed mb-2">Estudien y, sobre todo, escuchen harto la <strong>Marcha N°1</strong> y la <strong>Marcha N°3</strong>. Si tienen instrumento en casa, practiquen sacar las primeras 3 notas (la cuarta nota, que es la más aguda, no la usaremos en las marchas). Es fundamental cortar el flujo de aire con la lengua, sobre todo al repetir la misma nota varias veces o al cambiar de nota, ya que esto facilita la transición sin tener que empujar aire extra desde los pulmones.</p>
+            <ul class="list-disc list-inside space-y-1 text-slate-400 ml-2">
+              <li>Piensen en la nota antes de tocarla; tienen que memorizar las melodías.</li>
+              <li>Si avanzan rápido con las marchas N°1 y N°3, continúen con la <strong>Marcha N°5</strong>.</li>
+              <li>Si se les adormece o acalambra el labio, paren de tocar un momento y hagan vibraciones exageradas con los labios sueltos para reactivar la circulación de la sangre.</li>
+            </ul>
+          </div>
+
+          <!-- CAJAS -->
+          <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50 border-l-4 border-l-yellow-600">
+            <h3 class="text-white font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+              <span class="text-yellow-500 text-lg">●</span> Cajas
+            </h3>
+            <p class="leading-relaxed mb-2">Es urgente que aprendan bien el <strong>nuevo traspaso</strong> y lo unan con la Marcha de Parada (lo que antes llamaban «traspaso largo»), que ahora es doble. Al momento de practicar la Marcha N°1, tengan cuidado de no apurarse para mantener el pulso.</p>
+            <ul class="list-disc list-inside space-y-1 text-slate-400 ml-2">
+              <li>Practiquen especialmente las marchas <strong>N°3 y N°5</strong>.</li>
+              <li>Presten mucha atención a la mano que da cada golpe (izquierda, derecha o ambas) y al movimiento fluido de los brazos y las baquetas.</li>
+            </ul>
+          </div>
+
+          <!-- LIRAS -->
+          <div class="bg-slate-800/40 p-4 rounded-lg border border-slate-700/50 border-l-4 border-l-yellow-600">
+            <h3 class="text-white font-bold uppercase tracking-wider mb-2 flex items-center gap-2">
+              <span class="text-yellow-500 text-lg">●</span> Liras
+            </h3>
+            <p class="leading-relaxed mb-2">Esta semana el enfoque estará en integrar el nuevo repertorio y asegurar que todas las voces suenen ordenadas.</p>
+            <ul class="list-disc list-inside space-y-1 text-slate-400 ml-2">
+              <li>Aprendan de memoria el <strong>traspaso nuevo</strong>.</li>
+              <li>Las liras nuevas deben estudiarse las marchas desde cero.</li>
+              <li>Aprendan cada voz de la marcha <strong>«Los Viejos Estandartes»</strong> (recuerden que está a 3 voces).</li>
+            </ul>
+          </div>
+
+        </div>
+        <div class="p-6 border-t border-slate-800 text-center shrink-0">
+          <button id="btn-entendido" class="w-full sm:w-auto px-10 py-3 bg-yellow-600 hover:bg-yellow-500 text-slate-950 font-bold tracking-widest uppercase text-sm rounded transition-all shadow-[0_0_15px_rgba(202,138,4,0.3)]">
+            ENTENDIDO 👍
+          </button>
+        </div>
       </div>
     </div>
 
@@ -169,13 +238,24 @@ const marchas = [
           <button id="btn-instrumento" class="nav-btn text-slate-400 border-b-2 border-transparent hover:text-yellow-200 pb-1 font-semibold transition">Por Instrumento</button>
           <button id="btn-ranking" class="nav-btn text-slate-400 border-b-2 border-transparent hover:text-yellow-200 pb-1 font-semibold transition">Ranking 🏆</button>
         </div>
-        <button id="btn-login" class="mt-4 sm:mt-0 px-5 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold uppercase tracking-wider text-xs rounded transition-colors">
-          INICIAR SESIÓN
-        </button>
+        
+        <div class="mt-4 sm:mt-0 flex items-center gap-3">
+          <div id="panel-cronometro" class="hidden flex items-center gap-3 bg-slate-900 border border-yellow-600/30 px-3 py-1.5 rounded-lg shadow-inner">
+            <div class="text-slate-300 text-xs sm:text-sm font-mono flex items-center gap-2">
+              <span class="animate-pulse text-[10px]">🔴</span> <span id="tiempo-sesion">00:00</span>
+            </div>
+            <div class="h-4 w-px bg-slate-700"></div>
+            <div class="text-yellow-500 font-bold font-mono text-xs sm:text-sm">
+              +<span id="puntos-sesion">0</span> PTS
+            </div>
+          </div>
+          <button id="btn-login" class="px-5 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold uppercase tracking-wider text-xs rounded transition-colors">
+            INICIAR SESIÓN
+          </button>
+        </div>
       </div>
     </nav>
 
-    {/* BARRA DE LOGIN HORIZONTAL */}
     <div id="login-banner" class="hidden bg-slate-950 border-b border-yellow-600/30 w-full p-4 transition-all shadow-lg">
       <div class="max-w-4xl mx-auto flex flex-wrap items-end gap-4 sm:gap-6 justify-center sm:justify-start">
         <button id="btn-cerrar-banner" class="text-slate-500 hover:text-slate-300 mb-2 transition-colors">
@@ -237,7 +317,6 @@ const marchas = [
       </main>
 
       <main id="vista-instrumento" class="vista-oculta max-w-4xl mx-auto p-6 mt-4 hidden">
-        {/* TABS DE INSTRUMENTOS */}
         <div class="flex space-x-6 border-b border-slate-700 mb-8 px-2 overflow-x-auto whitespace-nowrap">
           <button id="tab-pifano" class="text-yellow-400 border-b-2 border-yellow-400 pb-2 font-semibold text-sm uppercase tracking-wider flex items-center gap-2 transition">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 22 22 2"></path><circle cx="16" cy="8" r="1.5" fill="currentColor"></circle></svg>
@@ -274,7 +353,6 @@ const marchas = [
         <div class="space-y-3">
           {marchas.map((marcha) => (
             <div class="acordeon-item bg-slate-800/50 border border-slate-700 rounded-lg overflow-hidden transition-all shadow-sm">
-              
               <button class="acordeon-btn w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/50 transition">
                 <div class="flex items-center gap-4">
                   <span class="text-xl font-bold text-yellow-600/80">{marcha.num}</span>
@@ -287,7 +365,6 @@ const marchas = [
                   
                   {/* ======================= PÍFANO ======================= */}
                   <div class="seccion-inst seccion-pifano block w-full">
-                    
                     <div class="p-6 pb-4 text-center">
                       <h4 class="text-yellow-500 font-bold mb-4 tracking-widest uppercase text-sm">Pífano</h4>
                       <div class="inline-flex bg-slate-950 rounded-lg p-1 border border-slate-800 shadow-inner">
@@ -332,7 +409,6 @@ const marchas = [
 
                   {/* ======================= CORNETA ======================= */}
                   <div class="seccion-inst seccion-corneta hidden w-full">
-                    
                     <div class="p-6 pb-4 text-center">
                       <h4 class="text-yellow-500 font-bold mb-4 tracking-widest uppercase text-sm">Corneta</h4>
                       <div class="inline-flex bg-slate-950 rounded-lg p-1 border border-slate-800 shadow-inner">
@@ -352,21 +428,24 @@ const marchas = [
                     <div id={`midi-corneta-${marcha.num}`} class="hidden w-full transition-all duration-300 bg-slate-900 border-t border-slate-800 p-6">
                       {marcha.midiCorneta ? (
                         <div class="max-w-2xl mx-auto flex flex-col items-center">
-                          {/* Visualizador puro de html-midi-player CON VARIABLES CSS */}
-                          <midi-visualizer
-  type="piano-roll"
-  id={`vis-corneta-${marcha.num}`}
-  src={marcha.midiCorneta}
-  style="width: 100%; height: 250px; background-color: white; border-radius: 8px; margin-bottom: 16px;"
-></midi-visualizer>
+                          
+                          {/* 1. Visualizador PRIMERO para animación fluida y colores */}
+                          <midi-visualizer 
+                            type="piano-roll" 
+                            id={`vis-corneta-${marcha.num}`} 
+                            src={marcha.midiCorneta}
+                            config={`{"pixelsPerTimeStep": 80}`}
+                            style="--midi-visualizer-note-color: #3b82f6; --midi-visualizer-active-note-color: #eab308; display: block; width: 100%;">
+                          </midi-visualizer>
 
-                          {/* Reproductor nativo */}
+                          {/* 2. Reproductor enlazado al visualizador */}
                           <midi-player
+                            id={`player-corneta-${marcha.num}`}
                             src={marcha.midiCorneta}
                             sound-font="https://storage.googleapis.com/magentadata/js/soundfonts/sgm_plus"
-                            visualizer={`#vis-corneta-${marcha.num}`}
-                            style="width: 100%;"
-                          ></midi-player>
+                            visualizer={`#vis-corneta-${marcha.num}`}>
+                          </midi-player>
+
                         </div>
                       ) : (
                         <p class="text-slate-500 text-sm text-center">MIDI no disponible</p>
@@ -409,7 +488,6 @@ const marchas = [
 
       </main>
 
-    {/* VISTA DEL RANKING */}
     <main id="vista-ranking" class="hidden px-4 py-8 w-full max-w-4xl mx-auto transition-all">
       <div class="text-center mb-8">
         <h2 class="text-3xl text-slate-100 font-bold tracking-widest uppercase mb-1" style="font-family: 'Playfair Display', serif;">
@@ -433,13 +511,10 @@ const marchas = [
           Mecánica del Ranking
         </h3>
         <p class="text-sm text-slate-300 leading-relaxed mb-2">
-          La disciplina tiene su recompensa. Cada vez que inicies sesión para ensayar tu instrumento, sumas <strong class="text-white">15 puntos</strong>.
+          La disciplina tiene su recompensa. Ganarás <strong class="text-white">1 punto por cada minuto</strong> de ensayo activo en esta página web.
         </p>
         <p class="text-xs text-slate-400 mb-4">
-          Para mantener una competencia justa, hay un límite de <strong class="text-slate-200">3 registros diarios</strong> (máx. 45 puntos por día). El contador se reinicia cada medianoche.
-        </p>
-        <p class="text-xs text-slate-400 mb-4">
-          Solo se puede iniciar sesión cada <strong class="text-slate-200">20 minutos</strong> 
+          Máximo <strong class="text-slate-200">90 puntos diarios</strong>. Puedes ensayar en las sesiones que necesites, sin límite de ingresos. El cronómetro se pausa automáticamente si cambias de pestaña.
         </p>
         <div class="bg-slate-900/60 border border-yellow-600/30 rounded py-2 px-4 inline-block">
           <p class="text-xs text-yellow-500 font-medium tracking-wide">
@@ -449,6 +524,39 @@ const marchas = [
       </div>
     </main>
 
+    </div>
+
+    <div class="max-w-4xl mx-auto px-4 pb-4 text-right">
+      <button id="btn-abrir-admin" class="text-slate-800 hover:text-slate-500 text-xs transition-colors">
+        ⚙️
+      </button>
+    </div>
+
+    <div id="modal-admin" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/90 backdrop-blur-sm hidden">
+      <div class="bg-slate-900 border border-yellow-600/30 p-8 rounded-xl w-full max-w-sm relative shadow-2xl">
+        <button id="btn-cerrar-admin" class="absolute top-4 right-4 text-slate-500 hover:text-white">✕</button>
+
+        <div id="admin-login-screen">
+          <h2 class="text-yellow-500 font-bold mb-4 text-center tracking-widest">ACCESO PROFESOR</h2>
+          <input type="password" id="input-pass-admin" placeholder="Contraseña..." class="bg-slate-800 text-white px-4 py-2 rounded mb-4 w-full border border-slate-600 outline-none focus:border-yellow-500">
+          <button id="btn-entrar-admin" class="w-full bg-slate-800 hover:bg-slate-700 text-yellow-500 font-bold py-2 rounded border border-slate-700 transition-all">VERIFICAR</button>
+        </div>
+
+        <div id="admin-panel-screen" class="hidden">
+          <h2 class="text-yellow-500 font-bold mb-6 text-center tracking-widest">GESTIÓN DE PUNTOS</h2>
+
+          <label class="text-slate-400 text-xs font-bold uppercase mb-1 block">Alumno:</label>
+          <select id="select-admin-nombre" class="h-10 rounded bg-slate-800 border border-slate-700 text-slate-200 px-3 w-full mb-4 outline-none appearance-none"></select>
+
+          <label class="text-slate-400 text-xs font-bold uppercase mb-1 block">Cantidad de Puntos:</label>
+          <input type="number" id="input-admin-puntos" value="15" class="h-10 rounded bg-slate-800 border border-slate-700 text-slate-200 px-3 w-full mb-6 outline-none">
+
+          <div class="flex gap-2">
+            <button id="btn-admin-restar" class="w-1/2 bg-red-900/40 hover:bg-red-800/80 text-red-400 font-bold py-2 rounded border border-red-800 transition-all">- RESTAR</button>
+            <button id="btn-admin-sumar" class="w-1/2 bg-green-900/40 hover:bg-green-800/80 text-green-400 font-bold py-2 rounded border border-green-800 transition-all">+ SUMAR</button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <footer class="bg-slate-950 border-t border-yellow-600/20 py-8 mt-12 text-center">
@@ -491,7 +599,7 @@ const marchas = [
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
-  // 1. NAVEGACIÓN Y ACORDEONES
+  // === NAVEGACIÓN Y ACORDEONES ===
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       const vista = e.target.id.replace('btn-', 'vista-');
@@ -518,7 +626,7 @@ const marchas = [
     });
   });
 
-  // 2. REPRODUCTOR Y VELOCIDAD (PÍFANO)
+  // === REPRODUCTOR Y VELOCIDAD (PÍFANO) ===
   document.querySelectorAll('.btn-play').forEach(btn => {
     btn.addEventListener('click', async function() {
       const player = document.getElementById(this.getAttribute('data-target'));
@@ -565,7 +673,7 @@ const marchas = [
     });
   });
 
-  // 3. DIGITACIÓN VISUAL PÍFANO
+  // === DIGITACIÓN VISUAL PÍFANO ===
   const mapa = { 74: "d5", 76: "e5", 78: "fs5", 79: "g5", 81: "a5", 83: "b5", 85: "cs6", 86: "d6" };
   let estadoActual = {};
 
@@ -596,7 +704,7 @@ const marchas = [
     });
   }, 50); 
 
-  // 4. CAMBIO DE INSTRUMENTO
+  // === CAMBIO DE INSTRUMENTO ===
   document.querySelectorAll('[id^="tab-"]').forEach(tab => {
     tab.addEventListener('click', (e) => {
       const instrumento = e.currentTarget.id.replace('tab-', '');
@@ -638,51 +746,56 @@ const marchas = [
     });
   });
 
-  // 7. SISTEMA DE LOGIN Y CHECK-IN
+  // === LÓGICA DE LOGIN (CONTRASEÑA Y POP-UP) ===
+  const capaBloqueo = document.getElementById('login-password');
+  const inputPass = document.getElementById('input-password');
+  const btnAcceder = document.getElementById('btn-acceder');
+  const popupInstrucciones = document.getElementById('popup-instrucciones');
+  const btnEntendido = document.getElementById('btn-entendido');
+
+  function mostrarInstrucciones() {
+    popupInstrucciones.classList.remove('hidden');
+    popupInstrucciones.classList.add('flex');
+  }
+
+  btnAcceder.addEventListener('click', () => {
+    if (inputPass.value === 'bandaliceo2026') {
+      capaBloqueo.style.opacity = '0';
+      setTimeout(() => {
+        capaBloqueo.classList.add('hidden');
+        mostrarInstrucciones();
+      }, 500);
+      localStorage.setItem('accesoConcedido', 'true');
+    } else {
+      inputPass.classList.add('ring-2', 'ring-red-500');
+      setTimeout(() => inputPass.classList.remove('ring-2', 'ring-red-500'), 500);
+    }
+  });
+
+  btnEntendido.addEventListener('click', () => {
+    popupInstrucciones.classList.add('hidden');
+    popupInstrucciones.classList.remove('flex');
+  });
+
+  if (localStorage.getItem('accesoConcedido') === 'true') {
+    capaBloqueo.classList.add('hidden');
+    mostrarInstrucciones();
+  }
+
+  // === SISTEMA DE CHECK-IN Y CRONÓMETRO ===
   const alumnosPorCurso = {
-    "4° Básico": [
-      "Juanito Pérez", "José Pepito", "Nicolaso Gómez", "Cristóbal Pino", "Elena Barrera", "Isidora Martinez", "Julián Ávila", 
-      "Marcelo Farías", "Noelia Pérez", "Omar Yáñez", "Pablo Lizana", 
-      "Rocío Pino", "Theo Valdés", "Yeremi Olivares"
-    ],
-    "5° Básico": [
-      "Agustina Palomino", "Alexia Cáceres", "Florencia Pino", "Isabella Gallegos", 
-      "León Arriagada", "Paolo Millacaris", "Patricio Pérez"
-    ],
-    "6° Básico": [
-      "Diana Martínez", "Ian Vargas", "Javier Palacios", "Julio Tobar", 
-      "Matías González", "Nahin Pino", "Renata Alarcón"
-    ],
-    "7° Básico": [
-      "Alonso Palacios", "Ángel Jofré", "Emily González", "Javier Pino", 
-      "Maite Rojas", "Martin Cabello", "Paolo Ibarra", "Santiago Rubio", "Vincent Zapata"
-    ],
-    "8° Básico": [
-      "Dennise Ávila", "Joaquín Horta", "Pedro Pablo Calderón"
-    ],
-    "1° MA": [
-      "Alejandro Oteíza", "Carlos Barrios", "Nicol Nuñez", "Sofia Duarte"
-    ],
-    "1° MB": [
-      "Genesis Calderón", "Matias Chavez"
-    ],
-    "2° MA": [
-      "Alejandra Pérez", "Amarilis Leiva", "Aylin Fernández", "Camila Barrios", 
-      "Cristóbal Carrasco", "Cristofer Aguilera", "Francheska Lizana", 
-      "Krishna Saavedra", "Millaray Serrano", "Pía Pérez", "Valentina Chaparro"
-    ],
-    "2° MB": [
-      "Alexis Guerrero", "Álvaro Millacaris"
-    ],
-    "3° MA": [
-      "Joaquín Contreras", "Jonathan Núñez", "Maite Valdés", "Sebastián Gómez"
-    ],
-    "3° MB": [
-      "Genaro Pérez", "Jesús Gallegos", "José Romero"
-    ],
-    "3° MC": [
-      "David Molina", "Pedro Farias", "Valeria Campos"
-    ]
+    "4° Básico": ["Juanito Pérez", "José Pepito", "Nicolaso Gómez", "Cristóbal Pino", "Elena Barrera", "Isidora Martinez", "Julián Ávila", "Marcelo Farías", "Noelia Pérez", "Omar Yáñez", "Pablo Lizana", "Rocío Pino", "Theo Valdés", "Yeremi Olivares"],
+    "5° Básico": ["Agustina Palomino", "Alexia Cáceres", "Florencia Pino", "Isabella Gallegos", "León Arriagada", "Paolo Millacaris", "Patricio Pérez"],
+    "6° Básico": ["Diana Martínez", "Ian Vargas", "Javier Palacios", "Julio Tobar", "Matías González", "Nahin Pino", "Renata Alarcón"],
+    "7° Básico": ["Alonso Palacios", "Ángel Jofré", "Emily González", "Javier Pino", "Maite Rojas", "Martin Cabello", "Paolo Ibarra", "Santiago Rubio", "Vincent Zapata"],
+    "8° Básico": ["Dennise Ávila", "Joaquín Horta", "Pedro Pablo Calderón"],
+    "1° MA": ["Alejandro Oteíza", "Carlos Barrios", "Nicol Nuñez", "Sofia Duarte"],
+    "1° MB": ["Genesis Calderón", "Matias Chavez"],
+    "2° MA": ["Alejandra Pérez", "Amarilis Leiva", "Aylin Fernández", "Camila Barrios", "Cristóbal Carrasco", "Cristofer Aguilera", "Francheska Lizana", "Krishna Saavedra", "Millaray Serrano", "Pía Pérez", "Valentina Chaparro"],
+    "2° MB": ["Alexis Guerrero", "Álvaro Millacaris"],
+    "3° MA": ["Joaquín Contreras", "Jonathan Núñez", "Maite Valdés", "Sebastián Gómez"],
+    "3° MB": ["Genaro Pérez", "Jesús Gallegos", "José Romero"],
+    "3° MC": ["David Molina", "Pedro Farias", "Valeria Campos"]
   };
 
   const btnLogin = document.getElementById('btn-login');
@@ -690,6 +803,14 @@ const marchas = [
   const btnCerrarBanner = document.getElementById('btn-cerrar-banner');
   const btnGuardarLogin = document.getElementById('btn-guardar-login');
   const selectNombre = document.getElementById('select-nombre');
+  
+  const panelCronometro = document.getElementById('panel-cronometro');
+  const displayTiempo = document.getElementById('tiempo-sesion');
+  const displayPuntos = document.getElementById('puntos-sesion');
+
+  let cronometroInterval = null;
+  let segundosActivos = parseInt(sessionStorage.getItem('segundosActivos')) || 0;
+  let puntosGanados = parseInt(sessionStorage.getItem('puntosGanados')) || 0;
 
   for (const curso in alumnosPorCurso) {
     const grupo = document.createElement('optgroup');
@@ -705,22 +826,98 @@ const marchas = [
   }
 
   function actualizarUI() {
-    const nombre = localStorage.getItem('alumnoBanda');
+    const nombre = sessionStorage.getItem('alumnoBanda');
     if (nombre) {
-      btnLogin.innerHTML = `<span class="uppercase tracking-widest text-xs font-bold text-yellow-500">${nombre}</span>`;
-      btnLogin.className = "mt-4 sm:mt-0 px-4 py-2 bg-slate-900 border border-slate-700 hover:border-yellow-600/50 rounded transition-colors flex items-center cursor-pointer shadow-sm";
+      btnLogin.innerHTML = `<span class="uppercase tracking-widest text-[10px] sm:text-xs font-bold text-slate-300">CERRAR SESIÓN</span>`;
+      btnLogin.className = "px-4 py-2 bg-slate-900 border border-red-900/50 hover:border-red-500 rounded transition-colors flex items-center cursor-pointer shadow-sm";
+      panelCronometro.classList.remove('hidden');
+      iniciarCronometro(nombre);
     } else {
-      btnLogin.innerHTML = 'REGISTRA TU PRÁCTICA';
-      btnLogin.className = "mt-4 sm:mt-0 px-5 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold uppercase tracking-wider text-xs rounded transition-colors cursor-pointer";
+      btnLogin.innerHTML = 'INICIAR SESIÓN';
+      btnLogin.className = "px-5 py-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-bold uppercase tracking-wider text-xs rounded transition-colors cursor-pointer";
+      panelCronometro.classList.add('hidden');
+      detenerCronometro();
     }
+  }
+
+  function actualizarDisplayTiempo() {
+    const min = Math.floor(segundosActivos / 60);
+    const sec = segundosActivos % 60;
+    displayTiempo.innerText = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+    displayPuntos.innerText = puntosGanados;
+  }
+
+  function iniciarCronometro(nombre) {
+    if (cronometroInterval) clearInterval(cronometroInterval);
+    actualizarDisplayTiempo();
+
+    cronometroInterval = setInterval(async () => {
+      // Calculamos cuánto lleva hoy sumando lo de la base de datos + la sesión actual
+      let puntosHoyDB = parseInt(sessionStorage.getItem('puntosHoyDB')) || 0;
+
+      if (!document.hidden && (puntosHoyDB + puntosGanados) < 90) {
+        segundosActivos++;
+        sessionStorage.setItem('segundosActivos', segundosActivos);
+        
+        const minutosActuales = Math.floor(segundosActivos / 60);
+        actualizarDisplayTiempo();
+
+        if (minutosActuales > puntosGanados) {
+          puntosGanados = minutosActuales;
+          sessionStorage.setItem('puntosGanados', puntosGanados);
+          displayPuntos.innerText = puntosGanados;
+
+          try {
+            const alumnoRef = doc(db, "ranking", nombre);
+            const docSnap = await getDoc(alumnoRef);
+            if (docSnap.exists()) {
+              const perfil = docSnap.data();
+              const hoy = new Date().toDateString();
+              
+              if (perfil.ultimaFecha !== hoy) {
+                perfil.ultimaFecha = hoy;
+                perfil.puntosHoy = 0;
+              }
+
+              if ((perfil.puntosHoy || 0) < 90) {
+                perfil.puntos += 1;
+                perfil.puntosHoy = (perfil.puntosHoy || 0) + 1;
+                await setDoc(alumnoRef, perfil);
+                
+                // Actualizamos la variable local en base a lo guardado
+                sessionStorage.setItem('puntosHoyDB', perfil.puntosHoy - puntosGanados);
+              }
+            }
+          } catch (e) { console.error("Error al guardar el punto:", e); }
+        }
+      }
+      
+      // Detener visualmente si llega al tope diario
+      let puntosActualizados = parseInt(sessionStorage.getItem('puntosHoyDB')) || 0;
+      if ((puntosActualizados + puntosGanados) >= 90) {
+          displayTiempo.innerText = "MÁX. DIARIO";
+          displayTiempo.classList.add("text-yellow-500");
+      }
+    }, 1000);
+  }
+
+  function detenerCronometro() {
+    if (cronometroInterval) clearInterval(cronometroInterval);
+    segundosActivos = 0;
+    puntosGanados = 0;
+    displayTiempo.classList.remove("text-yellow-500");
+    sessionStorage.removeItem('segundosActivos');
+    sessionStorage.removeItem('puntosGanados');
+    sessionStorage.removeItem('puntosHoyDB');
   }
 
   actualizarUI();
 
   btnLogin.addEventListener('click', () => {
-    if (localStorage.getItem('alumnoBanda')) {
-      if(confirm('¿Quieres cerrar tu sesión de ensayo en este dispositivo?')) {
-        localStorage.removeItem('alumnoBanda');
+    const nombreActual = sessionStorage.getItem('alumnoBanda');
+    if (nombreActual) {
+      if(confirm(`¿Terminaste tu ensayo, ${nombreActual}?\n\nLograste sumar ${puntosGanados} puntos en esta sesión.`)) {
+        sessionStorage.removeItem('alumnoBanda');
         actualizarUI();
       }
     } else {
@@ -745,52 +942,37 @@ const marchas = [
         const alumnoRef = doc(db, "ranking", nombre);
         const docSnap = await getDoc(alumnoRef);
         
-        const ahora = new Date();
-        const hoy = ahora.toDateString();
-        
-        let perfil = { 
-          puntos: 0, 
-          ultimaFecha: "", 
-          iniciosHoy: 0, 
-          nombre: nombre, 
-          ultimoCheckIn: 0 
-        };
+        const hoy = new Date().toDateString();
+        let perfil = docSnap.exists() ? docSnap.data() : { puntos: 0, ultimaFecha: hoy, iniciosHoy: 0, puntosHoy: 0, nombre: nombre };
 
-        if (docSnap.exists()) {
-          perfil = docSnap.data();
-        }
-
+        // Si es un nuevo día, reiniciamos su contador diario
         if (perfil.ultimaFecha !== hoy) {
           perfil.ultimaFecha = hoy;
           perfil.iniciosHoy = 0;
+          perfil.puntosHoy = 0;
         }
 
-        const tiempoTranscurrido = (ahora.getTime() - perfil.ultimoCheckIn) / 1000 / 60; 
+        perfil.iniciosHoy++; // Guardamos un registro estadístico de cuántas veces entra al día
+        await setDoc(alumnoRef, perfil);
 
-        if (perfil.iniciosHoy < 3) {
-          if (perfil.ultimoCheckIn === 0 || tiempoTranscurrido >= 20) {
-            perfil.iniciosHoy++;
-            perfil.puntos += 15;
-            perfil.ultimoCheckIn = ahora.getTime(); 
-            
-            await setDoc(alumnoRef, perfil);
-            alert(`¡Check-in exitoso, ${nombre}!\n\nLlevas ${perfil.iniciosHoy}/3 sesiones hoy.\nHas sumado 15 puntos.\n\n(Recuerda: tu próxima sesión puntuable será en 20 minutos).`);
-          } else {
-            const minutosFaltantes = Math.ceil(20 - tiempoTranscurrido);
-            alert(`¡Calma, ${nombre}!\n\nDebes esperar al menos 20 minutos entre sesiones para sumar puntos.\n\nTe faltan ${minutosFaltantes} minutos para el siguiente check-in.`);
-          }
-        } else {
-          alert(`¡Ya alcanzaste el límite de 3/3 sesiones hoy!\nNos vemos mañana para seguir sumando.`);
-        }
-
-        localStorage.setItem('alumnoBanda', nombre); 
+        sessionStorage.setItem('alumnoBanda', nombre); 
+        sessionStorage.setItem('puntosHoyDB', perfil.puntosHoy || 0); // Cargamos su progreso del día
+        
+        detenerCronometro(); 
         loginBanner.classList.add('hidden'); 
         selectNombre.value = '';
         actualizarUI(); 
+        
+        // Mensaje dinámico dependiendo de si ya logró los 90 puntos antes de entrar
+        if ((perfil.puntosHoy || 0) >= 90) {
+          alert(`¡Hola, ${nombre}!\n\nYa acumulaste tus 90 puntos de hoy. Puedes seguir usando el material para ensayar, pero el cronómetro ya no sumará más puntos en el ranking hasta mañana.`);
+        } else {
+          alert(`¡Sesión iniciada, ${nombre}!\n\nEl cronómetro comenzará a correr ahora. Ganarás 1 punto por cada minuto (hasta un máximo de 90 al día).\nRecuerda que si abres otra pestaña o minimizas el navegador, el tiempo se pausará.`);
+        }
 
       } catch (error) {
-        console.error("Error al guardar:", error);
-        alert("Error de conexión. Inténtalo de nuevo.");
+        console.error("Error al iniciar sesión:", error);
+        alert("Error de conexión con la base de datos. Inténtalo de nuevo.");
       } finally {
         btnGuardarLogin.innerHTML = textoOriginal;
         btnGuardarLogin.disabled = false;
@@ -802,7 +984,61 @@ const marchas = [
     }
   });
 
-  // 8. ESCUCHADOR EN TIEMPO REAL PARA EL RANKING
+  btnCerrarBanner.addEventListener('click', () => {
+    loginBanner.classList.add('hidden');
+    selectNombre.value = ''; 
+  });
+
+  btnGuardarLogin.addEventListener('click', async () => {
+    const nombre = selectNombre.value;
+    
+    if (nombre) {
+      const textoOriginal = btnGuardarLogin.innerHTML;
+      btnGuardarLogin.innerHTML = "CARGANDO...";
+      btnGuardarLogin.disabled = true;
+
+      try {
+        const alumnoRef = doc(db, "ranking", nombre);
+        const docSnap = await getDoc(alumnoRef);
+        
+        const hoy = new Date().toDateString();
+        let perfil = docSnap.exists() ? docSnap.data() : { puntos: 0, ultimaFecha: hoy, iniciosHoy: 0, puntosHoy: 0, nombre: nombre };
+
+        // Si es un nuevo día, reiniciamos su contador diario
+        if (perfil.ultimaFecha !== hoy) {
+          perfil.ultimaFecha = hoy;
+          perfil.iniciosHoy = 0;
+          perfil.puntosHoy = 0;
+        }
+
+        // ELIMINAMOS EL BLOQUEO AQUÍ.
+        // Ahora solo sumamos +1 a las veces que ha entrado, pero no lo bloqueamos.
+        perfil.iniciosHoy++; 
+        await setDoc(alumnoRef, perfil);
+
+        sessionStorage.setItem('alumnoBanda', nombre); 
+        sessionStorage.setItem('puntosHoyDB', perfil.puntosHoy || 0); // Cargamos su progreso del día
+        
+        detenerCronometro(); 
+        loginBanner.classList.add('hidden'); 
+        selectNombre.value = '';
+        actualizarUI(); 
+
+      } catch (error) {
+        console.error("Error al iniciar sesión:", error);
+        alert("Error de conexión con la base de datos. Inténtalo de nuevo.");
+      } finally {
+        btnGuardarLogin.innerHTML = textoOriginal;
+        btnGuardarLogin.disabled = false;
+      }
+      
+    } else {
+      selectNombre.classList.add('ring-2', 'ring-red-500');
+      setTimeout(() => selectNombre.classList.remove('ring-2', 'ring-red-500'), 1500);
+    }
+  });
+
+  // === ESCUCHADOR EN TIEMPO REAL PARA EL RANKING ===
   const contenedorRanking = document.getElementById('tabla-ranking-contenedor');
   
   if (contenedorRanking) {
@@ -849,26 +1085,7 @@ const marchas = [
     });
   }
 
-  const capaBloqueo = document.getElementById('login-password');
-  const inputPass = document.getElementById('input-password');
-  const btnAcceder = document.getElementById('btn-acceder');
-
-  btnAcceder.addEventListener('click', () => {
-    if (inputPass.value === 'bandaliceo2026') {
-      capaBloqueo.style.opacity = '0';
-      setTimeout(() => capaBloqueo.classList.add('hidden'), 500);
-      localStorage.setItem('accesoConcedido', 'true');
-    } else {
-      inputPass.classList.add('ring-2', 'ring-red-500');
-      setTimeout(() => inputPass.classList.remove('ring-2', 'ring-red-500'), 500);
-    }
-  });
-
-  if (localStorage.getItem('accesoConcedido') === 'true') {
-    capaBloqueo.classList.add('hidden');
-  }
-
-  // Alternar entre Video y MIDI
+  // === ALTERNAR ENTRE VIDEO Y MIDI ===
   window.cambiarModoPifano = function(numMarcha, modo) {
     const contVideo = document.getElementById(`youtube-pifano-${numMarcha}`);
     const contMidi = document.getElementById(`midi-pifano-${numMarcha}`);
@@ -880,54 +1097,114 @@ const marchas = [
     if (modo === 'video') {
       contVideo.classList.remove('hidden');
       contMidi.classList.add('hidden');
-      
       btnVideo.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
       btnMidi.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
     } else {
       contMidi.classList.remove('hidden');
       contVideo.classList.add('hidden');
-      
       btnMidi.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
       btnVideo.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
     }
   };
 
-window.cambiarModoCorneta = function(numMarcha, modo) {
-  const contVideo = document.getElementById(`youtube-corneta-${numMarcha}`);
-  const contMidi = document.getElementById(`midi-corneta-${numMarcha}`);
-  const btnVideo = document.getElementById(`btn-video-corneta-${numMarcha}`);
-  const btnMidi = document.getElementById(`btn-midi-corneta-${numMarcha}`);
-  
-  if (!contVideo || !contMidi) return;
+  window.cambiarModoCorneta = function(numMarcha, modo) {
+    const contVideo = document.getElementById(`youtube-corneta-${numMarcha}`);
+    const contMidi = document.getElementById(`midi-corneta-${numMarcha}`);
+    const btnVideo = document.getElementById(`btn-video-corneta-${numMarcha}`);
+    const btnMidi = document.getElementById(`btn-midi-corneta-${numMarcha}`);
+    
+    if (!contVideo || !contMidi) return;
 
-  if (modo === 'video') {
-    contVideo.classList.remove('hidden');
-    contMidi.classList.add('hidden');
-    btnVideo.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
-    btnMidi.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
-  } else {
-    contMidi.classList.remove('hidden');
-    contVideo.classList.add('hidden');
-    btnMidi.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
-    btnVideo.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
+    if (modo === 'video') {
+      contVideo.classList.remove('hidden');
+      contMidi.classList.add('hidden');
+      btnVideo.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
+      btnMidi.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
+    } else {
+      contMidi.classList.remove('hidden');
+      contVideo.classList.add('hidden');
+      btnMidi.className = "px-6 py-2 text-xs uppercase font-bold bg-slate-800 text-yellow-500 rounded transition-all shadow-sm";
+      btnVideo.className = "px-6 py-2 text-xs uppercase font-bold text-slate-400 hover:text-slate-200 transition-all rounded";
+    }
+  };
 
-    // FUERZA LOS COLORES AQUÍ
-    const visualizer = document.getElementById(`vis-corneta-${numMarcha}`);
-    if (visualizer) {
-      visualizer.style.setProperty('--midi-visualizer-note-color', '148, 163, 184');
-      visualizer.style.setProperty('--midi-visualizer-active-note-color', '234, 179, 8');
-      
-      // Aseguramos la conexión con el player
-      const player = document.getElementById(`player-corneta-${numMarcha}`);
-      if(player) {
-         player.visualizer = visualizer;
+  // === LÓGICA DEL PANEL ADMIN PROFESOR ===
+  const PASS_ADMIN = "admin2123.huique"; // <-- CAMBIA TU CONTRASEÑA AQUÍ
+
+  const modalAdmin = document.getElementById('modal-admin');
+  const btnAbrirAdmin = document.getElementById('btn-abrir-admin');
+  const btnCerrarAdmin = document.getElementById('btn-cerrar-admin');
+  const adminLoginScreen = document.getElementById('admin-login-screen');
+  const adminPanelScreen = document.getElementById('admin-panel-screen');
+  const inputPassAdmin = document.getElementById('input-pass-admin');
+  const btnEntrarAdmin = document.getElementById('btn-entrar-admin');
+  const selectAdminNombre = document.getElementById('select-admin-nombre');
+  const inputAdminPuntos = document.getElementById('input-admin-puntos');
+  const btnAdminSumar = document.getElementById('btn-admin-sumar');
+  const btnAdminRestar = document.getElementById('btn-admin-restar');
+
+  btnAbrirAdmin.addEventListener('click', () => {
+    modalAdmin.classList.remove('hidden');
+    adminLoginScreen.classList.remove('hidden');
+    adminPanelScreen.classList.add('hidden');
+    inputPassAdmin.value = '';
+  });
+
+  btnCerrarAdmin.addEventListener('click', () => {
+    modalAdmin.classList.add('hidden');
+  });
+
+  btnEntrarAdmin.addEventListener('click', () => {
+    if (inputPassAdmin.value === PASS_ADMIN) {
+      adminLoginScreen.classList.add('hidden');
+      adminPanelScreen.classList.remove('hidden');
+      selectAdminNombre.innerHTML = document.getElementById('select-nombre').innerHTML;
+    } else {
+      inputPassAdmin.classList.add('ring-2', 'ring-red-500');
+      setTimeout(() => inputPassAdmin.classList.remove('ring-2', 'ring-red-500'), 500);
+    }
+  });
+
+  async function modificarPuntosAdmin(operacion) {
+    const nombre = selectAdminNombre.value;
+    const puntosAModificar = parseInt(inputAdminPuntos.value);
+
+    if (!nombre) {
+      alert("Selecciona un alumno de la lista.");
+      return;
+    }
+    if (isNaN(puntosAModificar) || puntosAModificar <= 0) {
+      alert("Ingresa una cantidad válida de puntos.");
+      return;
+    }
+
+    const alumnoRef = doc(db, "ranking", nombre);
+    try {
+      const docSnap = await getDoc(alumnoRef);
+      let perfil = { puntos: 0, ultimaFecha: "", iniciosHoy: 0, nombre: nombre, ultimoCheckIn: 0 };
+
+      if (docSnap.exists()) {
+        perfil = docSnap.data();
       }
-      
-      // Forzar renderizado
-      if (visualizer.redraw) visualizer.redraw();
+
+      if (operacion === 'sumar') {
+        perfil.puntos += puntosAModificar;
+      } else if (operacion === 'restar') {
+        perfil.puntos -= puntosAModificar;
+        if (perfil.puntos < 0) perfil.puntos = 0; 
+      }
+
+      await setDoc(alumnoRef, perfil);
+      alert(`¡Éxito! ${nombre} ahora tiene ${perfil.puntos} puntos en total.`);
+    } catch (error) {
+      console.error("Error al modificar puntos:", error);
+      alert("Hubo un error de conexión con la base de datos.");
     }
   }
-};g
+
+  btnAdminSumar.addEventListener('click', () => modificarPuntosAdmin('sumar'));
+  btnAdminRestar.addEventListener('click', () => modificarPuntosAdmin('restar'));
+  
 </script>
   </body>
 </html>
