@@ -610,6 +610,11 @@ const marchas = [
     </footer>
 
 <script>
+  // 1. LOS IMPORTS SIEMPRE VAN AL PRINCIPIO
+  import { initializeApp } from "firebase/app";
+  import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, query, orderBy } from "firebase/firestore";
+
+  // 2. AHORA SÍ, EL RESTO DEL CÓDIGO
   const imagenesPifano = [
     "/img/digitacion/pifano/silencio.png",
     "/img/digitacion/pifano/d5.png",
@@ -622,13 +627,11 @@ const marchas = [
     "/img/digitacion/pifano/d6.png",
     "/img/digitacion/pifano/g6.png"
   ];
+  
   imagenesPifano.forEach(ruta => {
     const img = new Image();
     img.src = ruta;
   });
-
-  import { initializeApp } from "firebase/app";
-  import { getFirestore, doc, getDoc, setDoc, onSnapshot, collection, query, orderBy } from "firebase/firestore";
 
   const firebaseConfig = {
     apiKey: "AIzaSyBssDf2A_QSsS3bgdLaTbhvZRStRfBqEY",
